@@ -1,0 +1,505 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.story-section {
+    display: flex;
+    gap: 55px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.story-content {
+    flex: 1;
+}
+
+.story-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.story-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.story-content h1 em {
+    font-family: 'DM Serif Display', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.story-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+.story-image {
+    flex: 0 0 500px;
+    height: 400px;
+    background-color: #ddd;
+    border-radius: 8px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect width="300" height="200" fill="%23e0e0e0"/><text x="150" y="100" text-anchor="middle" font-family="Arial" font-size="14" fill="%23888">Team Photo</text></svg>');
+    background-size: cover;
+    background-position: center;
+    margin-top: 11%;
+}
+
+.journey-section {
+    display: flex;
+    gap: 55px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+    margin-top: 10%;
+}
+
+.journey-image {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.item {
+    background: #e0e0e0;
+    color: #909090;
+}
+
+.item:nth-child(3) {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:nth-child(1),
+.item:nth-child(2) {
+    width: 48%;
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.journey-content {
+    flex: 1;
+}
+
+.journey-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.journey-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+.future-section {
+    display: flex;
+    gap: 55px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+    margin-top: 10%;
+}
+
+.future-content {
+    flex: 1;
+}
+
+.future-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.future-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+.future-image {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.future-item {
+    background: #e0e0e0;
+    color: #909090;
+}
+
+.future-item:nth-child(1) {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.future-item:nth-child(2),
+.future-item:nth-child(3) {
+    width: 48%;
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.achievements-container {
+    display: flex;
+    gap: 30px;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.achievement1,
+.achievement2,
+.achievement3,
+.achievement4,
+.achievement5 {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.achievement1 img,
+.achievement2 img,
+.achievement3 img,
+.achievement4 img,
+.achievement5 img {
+    width: 60px;
+    height: 50px;
+}
+
+.achievement1 p,
+.achievement2 p,
+.achievement3 p,
+.achievement4 p,
+.achievement5 p {
+    font-size: 0.9rem;
+}
+
+.team-section {
+    margin-bottom: 40px;
+}
+
+.team-section h2 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.team-section h2 em {
+    font-family: 'DM Serif Display', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.team-description {
+    font-size: 1.2rem;
+    text-align: justify;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    column-count: 3;
+    column-gap: 20px;
+    margin-top: 6%;
+}
+
+.grid-item {
+    background-color: #bdc3c7;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    padding: 20px;
+    /* transition: all 0.3s ease; */
+}
+
+.grid-item:nth-child(1) {
+    height: 308px;
+}
+
+.grid-item:nth-child(2) {
+    height: 508px;
+}
+
+.grid-item:nth-child(3) {
+    height: 508px;
+}
+
+.grid-item:nth-child(4) {
+    height: 308px;
+}
+
+.grid-item:nth-child(5) {
+    height: 835px;
+}
+
+.dream-squad-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.dream-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.dream-content h1 em {
+    font-family: 'DM Serif Display', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.dream-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+.director-section {
+    margin-top: 8%;
+    display: flex;
+    row-gap: 55px;
+    flex-direction: column;
+}
+
+.director-head {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 400;
+    text-align: center;
+}
+
+.director-imgs {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.ronak,
+.omkar,
+.hemant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-grow: 1;
+    row-gap: 20px;
+}
+
+.ronak img,
+.omkar img,
+.hemant img {
+    width: 330px;
+    height: 450px;
+}
+
+.director-designation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #333;
+}
+
+.director-designation .director-name {
+    color: #2f2f2f;
+    font-weight: 500;
+}
+
+.director-designation p {
+    color: #6E6E6E;
+    font-weight: 400;
+}
+
+.team-container {
+    padding: 30px;
+    text-align: center;
+}
+
+.story-content,
+.journey-content,
+.future-content,
+.team-section,
+.dream-content,
+.director-section {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.story-content h1,
+.story-content h3,
+.story-content p,
+.journey-content h3,
+.journey-content p,
+.future-content h3,
+.future-content p,
+.dream-content h1,
+.dream-content p,
+.director-head,
+.director-designation {
+  transform: translateY(0px) rotateX(0deg);
+  transform-origin: top center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+
+@media (max-width: 768px) {
+
+    .story-section,
+    .journey-section,
+    .future-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .story-image,
+    .journey-image,
+    .future-image {
+        width: 100% !important;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .item:nth-child(1),
+    .item:nth-child(2) {
+        width: 47%;
+        height: 250px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .future-item:nth-child(2),
+    .future-item:nth-child(3) {
+        width: 47%;
+        height: 250px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .story-content h1,
+    .team-section h2,
+    .dream-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .story-content h3,
+    .journey-content h3,
+    .future-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .story-content p,
+    .journey-content p,
+    .future-content p,
+    .dream-content p,
+    .team-description {
+        font-size: 1rem;
+    }
+
+    .achievements-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .team-grid {
+        column-count: 1;
+    }
+
+    .grid-item {
+        height: auto !important;
+        padding: 20px;
+    }
+
+    .director-imgs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ronak img, .omkar img, .hemant img {
+        width: 320px;
+        height: 380px;
+    }
+    
+}
+
+@media (max-width: 360px) {
+    .item:nth-child(1), .item:nth-child(2) {
+        width: 46%;
+        height: 250px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .future-item:nth-child(2), .future-item:nth-child(3) {
+        width: 46%;
+        height: 250px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .director-imgs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ronak img, .omkar img, .hemant img {
+        width: 320px;
+        height: 380px;
+    }
+}
