@@ -1257,6 +1257,12 @@ textarea {
   transform: translateY(0);
 }
 
+.status-message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green; /* or red based on message type dynamically */
+}
+
 
 /* Footer */
 .footer {
