@@ -1,36 +1,31 @@
+/* CustomCursor.css */
+
 body {
     cursor: none;
 }
 
-.cursor {
+.custom-cursor {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%,
-            #eab308,
-            #ef4444,
-            #8b5cf6,
-            #22d3ee,
-            #e5e7eb);
-    filter: blur(35px);
     pointer-events: none;
     transform: translate(-50%, -50%);
+    background-color: rgba(150, 150, 150, 0.074);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.inner-cursor {
+    font-size: 30px;
+    font-weight: 400;
     color: white;
-    font-size: 32px;
-    font-weight: bold;
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    mix-blend-mode: difference; /* Makes the + stand out */
+  }
+  
+  .plus-sign {
+    user-select: none;
+    font-weight: 400;
+    color: rgb(184, 184, 184);
+  }
