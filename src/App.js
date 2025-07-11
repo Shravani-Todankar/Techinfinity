@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Cursor from "./cursor";
+import Cursor from "./cursor";
 import Header from "./components/Header";
 import Service from "./services/service"
 import OurWorks from "./works/ourWorks";
@@ -70,7 +70,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Cursor /> */}
+        <Cursor />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
