@@ -271,6 +271,12 @@ body {
   /* Ensure visibility */
 }
 
+.status-message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green; /* or red based on message type dynamically */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .search-container {
