@@ -258,7 +258,6 @@ body {
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr 1fr;
   min-height: 600px;
-  padding: 80px 80px 40px 80px;
   /* Added top padding */
   margin-bottom: 0;
   position: relative;
