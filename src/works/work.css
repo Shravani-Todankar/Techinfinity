@@ -259,6 +259,7 @@ body {
   grid-template-columns: 1fr 1fr;
   min-height: 600px;
   /* Added top padding */
+  padding-top: 80px;
   margin-bottom: 0;
   position: relative;
   z-index: 10;
