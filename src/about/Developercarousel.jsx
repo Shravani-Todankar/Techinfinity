@@ -25,7 +25,7 @@ const Developercarousel = () => {
     },
     {
       id: 3,
-      name: "Ziaa Shaikh",
+      name: "Maziya Shaikh",
       role: "Sr. Developer",
       image: "https://picsum.photos/seed/ziaa/400/600"
     },
