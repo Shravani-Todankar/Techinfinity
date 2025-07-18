@@ -1,6 +1,234 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './service.css';
-import CTAform from "../works/form.jsx";
+import CTAform from "../works/form";
+
+// Carousel Component
+const Carousel = () => {
+  const [progress, setProgress] = useState(50);
+  const [active, setActive] = useState(0);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  
+  const carouselRef = useRef(null);
+  const cursor1Ref = useRef(null);
+  const cursor2Ref = useRef(null);
+
+  // Constants
+  const speedWheel = 0.02;
+  const speedDrag = -0.1;
+
+  // Carousel items data
+  const items = [
+    {
+      title: "Rapoo",
+      num: "01",
+      img: "https://media.istockphoto.com/id/949299844/it/foto/vista-prospettica-dellesterno-delledificio-contemporaneo.jpg?s=612x612&w=0&k=20&c=_DR1aRHuTEV3EYBJo1ZXq1pF4SgwB9EVWQLaBj4sC5g="
+    },
+    {
+      title: "BespokeBliss",
+      num: "02",
+      img: "https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY="
+    },
+    {
+      title: "Derma MD",
+      num: "03",
+      img: "https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I="
+    },
+    {
+      title: "Sarvatra",
+      num: "04",
+      img: "https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs="
+    },
+    {
+      title: "MediSkin",
+      num: "05",
+      img: "https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0="
+    },
+    {
+      title: "Kunuts",
+      num: "06",
+      img: "https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8="
+    },
+    {
+      title: "Transil",
+      num: "07",
+      img: "https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8="
+    },
+    {
+      title: "Swaaha",
+      num: "08",
+      img: "https://media.istockphoto.com/id/1191376167/it/foto/villa-dellisola.jpg?s=612x612&w=0&k=20&c=PKslWo4FdbjinohKQlK_oWL34jqAsnzMTdy2bxEAf-I="
+    },
+    {
+      title: "Happiclap",
+      num: "09",
+      img: "https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8="
+    },
+    {
+      title: "EatProt",
+      num: "10",
+      img: "https://media.istockphoto.com/id/184619832/it/foto/distretto-finanziario-al-crepuscolo-londra.jpg?s=612x612&w=0&k=20&c=RAThrJOBY6vhlT6-kQpu9-9jLEzWToYfdw46S8B0Mu0="
+    }
+  ];
+
+  // Get Z-index for 3D effect
+  const getZindex = (array, index) => {
+    return array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i));
+  };
+
+  // Update active item and progress
+  useEffect(() => {
+    const clampedProgress = Math.max(0, Math.min(progress, 100));
+    const newActive = Math.floor(clampedProgress / 100 * (items.length - 1));
+    setActive(newActive);
+  }, [progress, items.length]);
+
+  // Handle wheel events
+  useEffect(() => {
+    const handleWheel = (e) => {
+      const wheelProgress = e.deltaY * speedWheel;
+      setProgress(prev => prev + wheelProgress);
+    };
+
+    document.addEventListener('wheel', handleWheel);
+    return () => document.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  // Handle mouse/touch events
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Update cursor position
+      const x = e.clientX;
+      const y = e.clientY;
+      setCursorPosition({ x, y });
+
+      if (!isDown) return;
+
+      const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+      const mouseProgress = (currentX - startX) * speedDrag;
+      setProgress(prev => prev + mouseProgress);
+      setStartX(currentX);
+    };
+
+    const handleMouseDown = (e) => {
+      setIsDown(true);
+      const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+      setStartX(x);
+    };
+
+    const handleMouseUp = () => {
+      setIsDown(false);
+    };
+
+    // Add event listeners
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchstart', handleMouseDown);
+    document.addEventListener('touchmove', handleMouseMove);
+    document.addEventListener('touchend', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchstart', handleMouseDown);
+      document.removeEventListener('touchmove', handleMouseMove);
+      document.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isDown, startX, speedDrag]);
+
+  // Update cursor position
+  useEffect(() => {
+    if (cursor1Ref.current) {
+      cursor1Ref.current.style.transform = `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`;
+    }
+    if (cursor2Ref.current) {
+      cursor2Ref.current.style.transform = `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`;
+    }
+  }, [cursorPosition]);
+
+  // Handle item click
+  const handleItemClick = (index) => {
+    const newProgress = (index / items.length) * 100 + 10;
+    setProgress(newProgress);
+  };
+
+  // Handle navigation buttons
+  const handlePrevious = () => {
+    const newActive = active > 0 ? active - 1 : items.length - 1;
+    const newProgress = (newActive / items.length) * 100 + 10;
+    setProgress(newProgress);
+  };
+
+  const handleNext = () => {
+    const newActive = active < items.length - 1 ? active + 1 : 0;
+    const newProgress = (newActive / items.length) * 100 + 10;
+    setProgress(newProgress);
+  };
+
+  // Calculate item styles
+  const getItemStyles = (index) => {
+    const zIndexes = getZindex(items, active);
+    const zIndex = zIndexes[index];
+    const activeValue = (index - active) / items.length;
+    const opacity = zIndex / items.length * 3 - 2;
+
+    return {
+      '--zIndex': zIndex,
+      '--active': activeValue,
+      '--opacity': opacity,
+      '--items': items.length
+    };
+  };
+
+  return (
+    <div className="dev-projects-container">
+      <div className="dev-projects-carousel" ref={carouselRef}>
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="dev-projects-item"
+            style={getItemStyles(index)}
+            onClick={() => handleItemClick(index)}
+          >
+            <div className="dev-projects-box">
+              <div className="dev-projects-title">{item.title}</div>
+              <div className="dev-projects-num">{item.num}</div>
+              <img src={item.img} alt={item.title} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="dev-projects-nav">
+        <button className="dev-projects-nav-btn dev-projects-nav-prev" onClick={handlePrevious}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <button className="dev-projects-nav-btn dev-projects-nav-next" onClick={handleNext}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div className="dev-projects-layout">
+        <div className="dev-projects-text-box">
+          The world's leading brands<br />
+          trust us to deliver<br />
+          exceptional results
+        </div>
+      </div>
+
+      <div className="dev-projects-cursor" ref={cursor1Ref}></div>
+      <div className="dev-projects-cursor dev-projects-cursor2" ref={cursor2Ref}></div>
+    </div>
+  );
+};
 
 const WebDevelopmentSection = () => {
     const faqData = [
@@ -158,6 +386,9 @@ const WebDevelopmentSection = () => {
                     </ul>
                 </div>
             </div>
+
+            {/* Carousel Section */}
+            <Carousel />
 
             {/* Mounting the FAQ Section */}
             <FaqSection />
