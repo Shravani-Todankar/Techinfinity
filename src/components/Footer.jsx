@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          All Rights Reserved 2025 © Techinfinity ™
+          All Rights Reserved 2025 © Techinfinity™
         </div>
 
         <div className="footer-large-text-desktop">TECHINFINITY</div>
