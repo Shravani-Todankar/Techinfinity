@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import "../App.css";
+import Cursor from "../cursor";
 import { initializeSecondSection, initializeCircleRingAnimation } from "../script";
 
 const SectionTwo = () => {
   useEffect(() => {
     // Initialize circle ring animation
     initializeCircleRingAnimation();
-    
+
     // Note: initializeSecondSection is called automatically from the scroll transition
     // in the main infinity animation sequence
   }, []);
@@ -14,6 +15,7 @@ const SectionTwo = () => {
   return (
     <section id="section-two">
       <div className="dm-zoom-reveal-wrapper-2">
+      <Cursor />
         <div className="e-con-inner">
           <div className="circle-ring"></div>
           <div className="circle-ring inner-ring-1"></div>
