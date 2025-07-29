@@ -1141,7 +1141,7 @@ export function initializeFormHandling() {
         submitBtn.disabled = true;
         
         setTimeout(() => {
-            alert('Thank you! Your message has been submitted successfully.');
+            // alert('Thank you! Your message has been submitted successfully.');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
             

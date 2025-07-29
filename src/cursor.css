@@ -1,4 +1,37 @@
+/* CustomCursor.css */
+
 body {
+    cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background-color: rgba(150, 150, 150, 0.074);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    mix-blend-mode: difference; /* Makes the + stand out */
+  }
+  
+  .plus-sign {
+    user-select: none;
+    font-weight: 400;
+    color: rgb(184, 184, 184);
+  }
+  
+
+/* body {
     cursor: none;
 }
 
@@ -33,4 +66,4 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './service.css';
-import CTAform from "../works/form.jsx";
+import CTAform from "../works/form";
 
 const WebDevelopmentSection = () => {
     const faqData = [
