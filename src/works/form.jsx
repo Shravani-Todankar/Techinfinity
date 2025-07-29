@@ -7,18 +7,29 @@ const SectionSeven = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+  
+    const form = e.target;
+  
+    // Manually extract values from form
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      company: form.company.value,
+      phone: form.phone.value,
+      requirements: form.requirements.value,
+      
+      // Manually added values
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      website: window.location.href,
+    };
+  
     emailjs
-      .sendForm(
-        "service_7qncbej",      // replace with your actual service ID
-        "template_gmxbd9s",     // replace with your actual template ID
-        e.target,
-        "B4FCDLx6lhggSt244"       // replace with your actual public key
-      )
+      .send("service_7qncbej", "template_gmxbd9s", formData, "B4FCDLx6lhggSt244")
       .then(
         (result) => {
-          setStatusMessage("Form submitted successfully!");
-          e.target.reset();
+          setStatusMessage("Thank you! Form has been submitted successfully.!");
+          form.reset();
         },
         (error) => {
           setStatusMessage("Error submitting the form. Please try again.");

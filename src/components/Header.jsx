@@ -16,7 +16,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        <Link to="/" onClick={closeMobileMenu}>
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
 
       <nav className={`nav-links ${isMobileMenuOpen ? 'nav-open' : ''}`}>

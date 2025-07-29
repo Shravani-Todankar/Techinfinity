@@ -6,7 +6,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: 'Helvetica Neue', sans-serif;
   scroll-behavior: smooth;
   background: #fff;
@@ -22,6 +22,7 @@ html {
   position: relative;
   z-index: 1000;
   transition: transform 0.8s ease, opacity 0.8s ease;
+  margin: 0px 20px;
 }
 
 .header.hidden {
@@ -303,8 +304,8 @@ html {
 
 .img-item {
   position: absolute;
-  width: 60px;
-  height: 70px;
+  width: 70px;
+  height: 80px;
   object-fit: cover;
   border-radius: 8px;
   opacity: 0;
@@ -391,6 +392,7 @@ a .img-item {
   align-items: center;
   gap: 10px;
   font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
 }
 
 .scroll-indicator.show {
@@ -402,6 +404,7 @@ a .img-item {
   height: 20px;
   transform: rotate(45deg);
   animation: bounce 2s infinite;
+  padding-left: 12px;
 }
 
 @keyframes bounce {
@@ -683,6 +686,8 @@ section.section-three {
   width: 100vw;
   justify-content: center;
   height: auto;
+  align-items: start;
+  overflow: hidden;
 }
 
 .svg-line path {
@@ -693,14 +698,8 @@ section.section-three {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   transition: stroke-dashoffset 5s ease-out;
-}
-
-
-.svg-section {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  overflow: hidden;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .svg-line {
@@ -709,9 +708,13 @@ section.section-three {
   height: auto;
 }
 
-.svg-line path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.w-full.bg-white{
+  width: 100vw;
+}
+
+.w-full.bg-white svg {
+  height: 290vh;
+  margin-top: -2%;
 }
 
 
@@ -723,7 +726,7 @@ section.section-three {
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-left: 80px;
+  margin-left: 100px;
   margin-right: 80px;
   padding-top: 260px;
 }
@@ -783,6 +786,7 @@ section.section-three {
   height: 350px;
   width: 300px;
   background-size: cover;
+  background-position: center center;
   position: absolute;
   z-index: 2;
   opacity: 0;
@@ -1260,7 +1264,8 @@ textarea {
 .status-message {
   margin-top: 15px;
   font-weight: bold;
-  color: green; /* or red based on message type dynamically */
+  color: green;
+  /* or red based on message type dynamically */
 }
 
 
@@ -2016,9 +2021,10 @@ textarea {
     line-height: 1.4;
     width: 80%;
   }
+
   section.section-three {
     display: none;
-}
+  }
 }
 
 @media (min-width: 770px) {
@@ -2059,5 +2065,18 @@ textarea {
     height: auto;
     padding-left: 38px;
     display: block;
+  }
+
+  .service-image {
+    height: 200px;
+    width: 150px;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    margin-top: -150px;
+    transform: scale(0.4);
+    border-radius: 10px;
   }
 }

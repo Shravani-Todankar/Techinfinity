@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './about.css';
-import { initAboutAnimations } from './about.js'; // Import animation logic
+import { initAboutAnimations } from './about.js';
 import DeveloperCarousel from "./Developercarousel.jsx"
 import SeoCarousel from "./SeoCarousel";
 import GraphicCarousel from "./GraphicCarousel";
@@ -20,24 +20,23 @@ const About = () => {
   const directorRef = useRef(null);
 
   useEffect(() => {
-    // Initialize animations with refs
-    const animationContext = initAboutAnimations({
-      storyRef,
-      journeyRef,
-      futureRef,
-      achievementsRef,
-      teamRef,
-      dreamRef,
-      directorRef
+    document.fonts.ready.then(() => {
+      const animationContext = initAboutAnimations({
+        storyRef,
+        journeyRef,
+        futureRef,
+        achievementsRef,
+        teamRef,
+        dreamRef,
+        directorRef
+      });
+  
+      return () => {
+        if (animationContext) animationContext.revert();
+      };
     });
-
-    // Cleanup function
-    return () => {
-      if (animationContext) {
-        animationContext.revert();
-      }
-    };
   }, []);
+  
 
   return (
     <>

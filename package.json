@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@studio-freight/lenis": "^1.0.42",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "gsap": "^3.13.0",
+    "matter-js": "^0.20.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",

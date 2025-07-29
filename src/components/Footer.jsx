@@ -1,5 +1,6 @@
 // Footer.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import logo from "../assets/TechinfinityLogo.png";
 
@@ -9,8 +10,14 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section company-info">
-            <div className="techlogo">
+            {/* <div className="techlogo">
               <img src={logo} alt="Techinfinity Logo" />
+            </div> */}
+
+            <div className="techlogo">
+              <Link to="/">
+                <img src={logo} alt="Techinfinity Logo" />
+              </Link>
             </div>
             <div className="phone">
               <p>

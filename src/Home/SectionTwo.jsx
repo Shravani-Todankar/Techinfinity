@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import "../App.css";
+import Cursor from "../cursor";
 import { initializeSecondSection, initializeCircleRingAnimation } from "../script";
 
 const SectionTwo = () => {
   useEffect(() => {
     // Initialize circle ring animation
     initializeCircleRingAnimation();
-    
+
     // Note: initializeSecondSection is called automatically from the scroll transition
     // in the main infinity animation sequence
   }, []);
@@ -14,6 +15,7 @@ const SectionTwo = () => {
   return (
     <section id="section-two">
       <div className="dm-zoom-reveal-wrapper-2">
+        <Cursor />
         <div className="e-con-inner">
           <div className="circle-ring"></div>
           <div className="circle-ring inner-ring-1"></div>
@@ -29,21 +31,25 @@ const SectionTwo = () => {
             />
           ))}
 
+          {/* Background video - with autoplay for visual effect */}
           <div className="center-video">
             <iframe
               src="https://www.youtube.com/embed/n9yh-saRjbg?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=n9yh-saRjbg&modestbranding=1&disablekb=1&fs=0&playsinline=1"
-              title="Showreel Video"
+              title="Background Video"
               frameBorder="0"
               allow="autoplay; encrypted-media"
-              allowFullScreen
             ></iframe>
           </div>
 
           <div className="video-overlay" id="videoOverlay">
-            <div className="play-button" id="playButton">
+            <button
+              className="play-button"
+              id="playButton"
+              aria-label="Play showreel video"
+            >
               <div className="play-icon"></div>
               <span className="play-text">PLAY SHOWREEL</span>
-            </div>
+            </button>
           </div>
         </div>
 

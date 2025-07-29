@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Cursor from "./cursor";
 import Header from "./components/Header";
 import Service from "./services/service"
 import OurWorks from "./works/ourWorks";
@@ -10,43 +9,12 @@ import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
 import SectionFour from "./Home/SectionFour";
 import SectionFive from "./Home/SectionFive";
+import FallingText from "./Home/FallingText";
 import SectionSix from "./Home/SectionSix";
 import SectionSeven from "./Home/SectionSeven";
 import Footer from "./components/Footer";
 import { initializeAllAnimations } from "./script";
 import "./App.css";
-
-// function App() {
-//   useEffect(() => {
-//     document.title = "Best Digital Marketing Service Provider Agency In Mumbai | Techinfinity";
-
-//     // Initialize all animations and cleanup
-//     const cleanup = initializeAllAnimations();
-
-//     // Cleanup function
-//     return cleanup;
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       <Header />
-//       <SectionOne />
-//       <SectionTwo />
-//       <SectionThree />
-//       <SectionFour />
-//       <SectionFive />
-//       <SectionSix />
-//       <SectionSeven />
-//       <Footer />
-
-//       {/* Go to top button */}
-//       <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">
-//         <span className="icon">↑</span>
-//       </button>
-//     </div>
-//   );
-// }
-
 
 const Home = () => (
   <>
@@ -55,6 +23,17 @@ const Home = () => (
     <SectionThree />
     <SectionFour />
     <SectionFive />
+    <FallingText
+      text={`WROGN QUDICH Intellve Sarvatra DermaMD MG Godrej MSwipe TimeStone ORRA Kunuts Sereki JKShah Swaaha`}
+      highlightWords={["QUDICH", "Sarvatra", "MG", "MSwipe", "ORRA", "Sereki", "Swaaha"]}
+      highlightClass="highlighted"
+      trigger="hover"
+      backgroundColor="transparent"
+      wireframes={false}
+      gravity={0.56}
+      fontSize="1rem"
+      mouseConstraintStiffness={0.9}
+    />
     <SectionSix />
     <SectionSeven />
   </>
@@ -70,14 +49,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Cursor />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<Service />} />
           <Route path="/our-works" element={<OurWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
-          {/* Add future routes for /clients, /about etc. */}
         </Routes>
         <Footer />
         <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">

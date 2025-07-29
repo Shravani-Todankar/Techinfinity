@@ -44,15 +44,30 @@ const OurWorks = () => {
   const observerRef = useRef(null);
 
   const allImages = generateImages();
-  const itemsPerPage = 10; // Items per page for "All" category
+  const itemsPerPage = 12; // Items per page for "All" category
 
   // Filter images based on category and search term
+  // const filteredImages = allImages.filter(img => {
+  //   const matchesCategory = activeCategory === 'all' || img.category === activeCategory;
+  //   // const matchesSearch = img.id.toString().includes(searchTerm);
+  //   const matchesSearch = img.id.toString().includes(searchTerm) ||
+  //                     img.category.toLowerCase().includes(searchTerm);
+
+  //   return matchesCategory && matchesSearch;
+  // });
+
   const filteredImages = allImages.filter(img => {
     const matchesCategory = activeCategory === 'all' || img.category === activeCategory;
-    // const matchesSearch = img.id.toString().includes(searchTerm);
+    
+    // Find the category object for this image
+    const categoryObj = categories.find(cat => cat.value === img.category);
+    const categoryLabel = categoryObj ? categoryObj.label.toLowerCase() : '';
+    
+    // Check if search term matches ID, internal category name, or display label
     const matchesSearch = img.id.toString().includes(searchTerm) ||
-                      img.category.toLowerCase().includes(searchTerm);
-
+                         img.category.toLowerCase().includes(searchTerm) ||
+                         categoryLabel.includes(searchTerm);
+  
     return matchesCategory && matchesSearch;
   });
 

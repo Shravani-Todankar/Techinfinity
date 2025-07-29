@@ -29,12 +29,12 @@ const imgSrcs = [
     'https://picsum.photos/id/1060/60/70',
     'https://picsum.photos/id/1062/60/70',
     'https://picsum.photos/id/1063/60/70',
-    'https://picsum.photos/id/1067/60/70',
-    'https://picsum.photos/id/1068/60/70',
-    'https://picsum.photos/id/1071/60/70',
-    'https://picsum.photos/id/1073/60/70',
-    'https://picsum.photos/id/1074/60/70',
-    'https://picsum.photos/id/1080/60/70',
+    // 'https://picsum.photos/id/1067/60/70',
+    // 'https://picsum.photos/id/1068/60/70',
+    // 'https://picsum.photos/id/1071/60/70',
+    // 'https://picsum.photos/id/1073/60/70',
+    // 'https://picsum.photos/id/1074/60/70',
+    // 'https://picsum.photos/id/1080/60/70',
     'https://picsum.photos/id/1084/60/70',
     'https://picsum.photos/id/1081/60/70',
 ];
@@ -63,11 +63,11 @@ const imgLinks = [
     'https://example.com/portfolio/project-12',
     'https://example.com/contact',
     'https://example.com/portfolio/project-13',
-    'https://example.com/blog/web-design-tips',
-    'https://example.com/portfolio/project-14',
-    'https://example.com/services/branding',
-    'https://example.com/portfolio/project-15',
-    'https://example.com/testimonials',
+    // 'https://example.com/blog/web-design-tips',
+    // 'https://example.com/portfolio/project-14',
+    // 'https://example.com/services/branding',
+    // 'https://example.com/portfolio/project-15',
+    // 'https://example.com/testimonials',
     'https://example.com/portfolio/project-16',
     'https://example.com/get-quote',
 ];
@@ -185,7 +185,7 @@ export function alignImagesInRow() {
     if (!infinityContainer || !images.length) return;
     
     const containerWidth = infinityContainer.clientWidth;
-    const margin = 10;
+    const margin = 20;
     const totalWidth = images.length * (60 + margin) - margin;
     let startX = (containerWidth - totalWidth) / 2;
 
@@ -676,6 +676,8 @@ export function initializeSecondSection() {
     }
 }
 
+// Add this to your script.js file - Modified initMagneticPlayButton function
+
 function initMagneticPlayButton() {
     const videoOverlay = document.getElementById('videoOverlay');
     const playButton = document.getElementById('playButton');
@@ -746,13 +748,148 @@ function initMagneticPlayButton() {
         });
     }
 
+    function createLightboxModal() {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.className = 'video-lightbox-modal';
+        modal.innerHTML = `
+            <div class="lightbox-backdrop"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close" aria-label="Close video">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="lightbox-video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/n9yh-saRjbg?autoplay=1&rel=0&modestbranding=1"
+                        title="Showreel Video"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </div>
+        `;
+
+        // Add modal styles
+        const styles = `
+            .video-lightbox-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .video-lightbox-modal.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .lightbox-backdrop {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                cursor: pointer;
+            }
+
+            .lightbox-content {
+                position: relative;
+                width: 90%;
+                max-width: 1200px;
+                aspect-ratio: 16/9;
+                background: #000;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+                transform: scale(0.8);
+                transition: transform 0.3s ease;
+            }
+
+            .video-lightbox-modal.active .lightbox-content {
+                transform: scale(1);
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: -50px;
+                right: 0;
+                background: rgba(255, 255, 255, 0.1);
+                border: none;
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+                z-index: 10001;
+            }
+
+            .lightbox-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: scale(1.1);
+            }
+
+            .lightbox-video-container {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            .lightbox-video-container iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            @media (max-width: 768px) {
+                .lightbox-content {
+                    width: 95%;
+                    margin: 20px;
+                }
+                
+                .lightbox-close {
+                    top: -60px;
+                    right: 10px;
+                }
+            }
+        `;
+
+        // Add styles to head if not already added
+        if (!document.querySelector('#lightbox-styles')) {
+            const styleSheet = document.createElement('style');
+            styleSheet.id = 'lightbox-styles';
+            styleSheet.textContent = styles;
+            document.head.appendChild(styleSheet);
+        }
+
+        return modal;
+    }
+
     function handlePlayButtonClick(e) {
         e.preventDefault();
         e.stopPropagation();
         
+        // Remove magnetic effect listeners
         videoOverlay.removeEventListener('mousemove', updateMagneticEffect);
         videoOverlay.removeEventListener('mouseleave', resetButton);
         
+        // Button click animation
         gsap.to(playButton, {
             scale: 0.9,
             duration: 0.1,
@@ -766,17 +903,48 @@ function initMagneticPlayButton() {
             }
         });
         
+        // Create and show lightbox modal
+        const modal = createLightboxModal();
+        document.body.appendChild(modal);
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Show modal with animation
         setTimeout(() => {
-            gsap.to(videoOverlay, {
-                opacity: 0,
-                duration: 0.8,
-                ease: "power2.out",
-                onComplete: () => {
-                    videoOverlay.style.pointerEvents = 'none';
-                    videoOverlay.style.display = 'none';
+            modal.classList.add('active');
+        }, 10);
+        
+        // Close modal function
+        function closeLightbox() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            setTimeout(() => {
+                if (modal.parentNode) {
+                    document.body.removeChild(modal);
                 }
-            });
-        }, 500);
+            }, 300);
+        }
+        
+        // Add event listeners for closing
+        const closeBtn = modal.querySelector('.lightbox-close');
+        const backdrop = modal.querySelector('.lightbox-backdrop');
+        
+        closeBtn.addEventListener('click', closeLightbox);
+        backdrop.addEventListener('click', closeLightbox);
+        
+        // Close on Escape key
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                document.removeEventListener('keydown', handleKeyDown);
+            }
+        }
+        document.addEventListener('keydown', handleKeyDown);
+        
+        // Remove the original video overlay fade out
+        // Keep the video overlay visible for future use
     }
 
     setTimeout(() => {
@@ -955,56 +1123,156 @@ export function initializeCircleRingAnimation() {
 }
 
 // SVG line animation
-export function initSVGAnimation() {
+// export function initSVGAnimation() {
+//     const svgSection = document.querySelector('.section-three');
+//     const svgPaths = document.querySelectorAll('.svg-line path');
+    
+//     if (!svgSection || !svgPaths.length) return;
+    
+//     svgPaths.forEach(path => {
+//         const pathLength = path.getTotalLength();
+//         path.style.strokeDasharray = pathLength;
+//         path.style.strokeDashoffset = pathLength;
+//     });
+    
+//     function updateSVGAnimation() {
+//         const sectionTop = svgSection.offsetTop;
+//         const sectionHeight = svgSection.offsetHeight;
+//         const scrollTop = window.pageYOffset;
+//         const windowHeight = window.innerHeight;
+        
+//         const sectionStart = sectionTop - windowHeight;
+//         const sectionEnd = sectionTop + sectionHeight;
+        
+//         let scrollProgress = 0;
+        
+//         if (scrollTop >= sectionStart && scrollTop <= sectionEnd) {
+//             scrollProgress = (scrollTop - sectionStart) / (sectionEnd - sectionStart);
+//             scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+//         }
+        
+//         svgPaths.forEach(path => {
+//             const pathLength = path.getTotalLength();
+//             const drawLength = pathLength * scrollProgress;
+//             path.style.strokeDashoffset = pathLength - drawLength;
+//         });
+//     }
+    
+//     updateSVGAnimation();
+    
+//     const scrollHandler = () => updateSVGAnimation();
+//     const resizeHandler = () => updateSVGAnimation();
+    
+//     window.addEventListener('scroll', scrollHandler);
+//     window.addEventListener('resize', resizeHandler);
+    
+//     return () => {
+//         window.removeEventListener('scroll', scrollHandler);
+//         window.removeEventListener('resize', resizeHandler);
+//     };
+// }
+
+export function initSectionThreeSVGAnimation() {
     const svgSection = document.querySelector('.section-three');
-    const svgPaths = document.querySelectorAll('.svg-line path');
+    const svgPaths = document.querySelectorAll('.section-three svg path, .section-three svg line');
     
     if (!svgSection || !svgPaths.length) return;
     
-    svgPaths.forEach(path => {
-        const pathLength = path.getTotalLength();
-        path.style.strokeDasharray = pathLength;
-        path.style.strokeDashoffset = pathLength;
-    });
-    
-    function updateSVGAnimation() {
-        const sectionTop = svgSection.offsetTop;
-        const sectionHeight = svgSection.offsetHeight;
-        const scrollTop = window.pageYOffset;
-        const windowHeight = window.innerHeight;
+    // Group elements by layers and initialize stroke properties
+    const elementsData = Array.from(svgPaths).map((path, index) => {
+        const length = path.getTotalLength();
+        let layer = 0;
         
-        const sectionStart = sectionTop - windowHeight;
-        const sectionEnd = sectionTop + sectionHeight;
-        
-        let scrollProgress = 0;
-        
-        if (scrollTop >= sectionStart && scrollTop <= sectionEnd) {
-            scrollProgress = (scrollTop - sectionStart) / (sectionEnd - sectionStart);
-            scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+        // Determine which layer this element belongs to
+        if (index >= 0 && index <= 3) {
+            layer = 0; // Top curves layer
+        } else if (index >= 4 && index <= 7) {
+            layer = 1; // Middle vertical lines layer
+        } else if (index >= 8 && index <= 11) {
+            layer = 2; // Bottom curves layer
         }
         
-        svgPaths.forEach(path => {
-            const pathLength = path.getTotalLength();
-            const drawLength = pathLength * scrollProgress;
-            path.style.strokeDashoffset = pathLength - drawLength;
-        });
-    }
+        // Initialize stroke properties
+        path.style.strokeDasharray = length;
+        path.style.strokeDashoffset = length;
+        
+        return {
+            element: path,
+            length: length,
+            layer: layer,
+            index: index
+        };
+    });
     
-    updateSVGAnimation();
+    // Create ScrollTrigger for Section Three SVG Animation
+    ScrollTrigger.create({
+        trigger: ".section-three",
+        start: "top 80%", // Start when section-three is 80% in viewport
+        end: "bottom 20%", // End when section-three is 20% in viewport
+        scrub: 1, // Smooth scrubbing, tied to scroll position
+        invalidateOnRefresh: true, // Recalculate on window resize
+        onUpdate: (self) => {
+            const progress = self.progress;
+            
+            elementsData.forEach(data => {
+                // Each layer starts animating after the previous layer is complete
+                const layerStartProgress = data.layer * 0.35; // Layer 0 starts at 0%, layer 1 at 25%, layer 2 at 50%
+                const layerAnimationDuration = 0.3; // Each layer animates over 30% of scroll
+                
+                const layerEndProgress = layerStartProgress + layerAnimationDuration;
+                
+                let layerScrollFraction = 0;
+                if (progress >= layerStartProgress && progress <= layerEndProgress) {
+                    layerScrollFraction = (progress - layerStartProgress) / layerAnimationDuration;
+                } else if (progress > layerEndProgress) {
+                    layerScrollFraction = 1;
+                }
+                
+                // Apply the animation
+                if (data.element && data.element.style) {
+                    data.element.style.strokeDashoffset = data.length * (1 - layerScrollFraction);
+                }
+            });
+        },
+        onLeave: () => {
+            // Ensure all lines are fully drawn when leaving the section
+            elementsData.forEach(data => {
+                if (data.element && data.element.style) {
+                    data.element.style.strokeDashoffset = 0;
+                }
+            });
+        },
+        onEnterBack: () => {
+            // Reset animation when scrolling back into section from below
+            elementsData.forEach(data => {
+                if (data.element && data.element.style) {
+                    data.element.style.strokeDashoffset = data.length;
+                }
+            });
+        },
+        onLeaveBack: () => {
+            // Reset animation when scrolling back up past the section
+            elementsData.forEach(data => {
+                if (data.element && data.element.style) {
+                    data.element.style.strokeDashoffset = data.length;
+                }
+            });
+        }
+    });
     
-    const scrollHandler = () => updateSVGAnimation();
-    const resizeHandler = () => updateSVGAnimation();
-    
-    window.addEventListener('scroll', scrollHandler);
-    window.addEventListener('resize', resizeHandler);
-    
+    // Return cleanup function
     return () => {
-        window.removeEventListener('scroll', scrollHandler);
-        window.removeEventListener('resize', resizeHandler);
+        ScrollTrigger.getAll().forEach(trigger => {
+            if (trigger.trigger && trigger.trigger.closest('.section-three')) {
+                trigger.kill();
+            }
+        });
     };
 }
 
+
 // Section-six infinity gallery
+
 const imageData = [
     { src: 'https://picsum.photos/60/70?random=1', alt: 'Mountain landscape' },
     { src: 'https://picsum.photos/60/70?random=2', alt: 'Forest path' },
@@ -1238,22 +1506,6 @@ export function smoothScrollToTop() {
     });
 }
 
-// Parallax effect for pinned form
-// export function initializePinnedFormParallax() {
-//     const sectionSeven = document.querySelector(".section-seven");
-//     if (!sectionSeven) return;
-    
-//     ScrollTrigger.create({
-//         trigger: sectionSeven,
-//         start: "top top",
-//         end: () => "+=100%",
-//         pin: true,
-//         pinSpacing: false,
-//         anticipatePin: 1,
-//         markers: false
-//     });
-// }
-
 
 // Initialize all animations when DOM is ready
 export function initializeAllAnimations() {
@@ -1266,7 +1518,7 @@ export function initializeAllAnimations() {
     initializeCircleRingAnimation();
     
     // Initialize SVG animation
-    const svgCleanup = initSVGAnimation();
+    const svgCleanup = initSectionThreeSVGAnimation();
     
     // Initialize service provider
     initializeServiceProvider();
@@ -1283,9 +1535,6 @@ export function initializeAllAnimations() {
     
     // Initialize go to top
     initializeGoToTop();
-    
-    // Initialize pinned form parallax
-    // initializePinnedFormParallax();
     
     // Scroll indicator reinitialization
     reenableScrollIndicatorOnScrollUp();
