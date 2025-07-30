@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Service from "./services/service"
 import OurWorks from "./works/ourWorks";
 import AboutUs from "./about/aboutUs";
+import Careers from "./career/Careers";
+import JobDetailPage from "./career/JobDetailModal";
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
@@ -55,6 +57,8 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/our-works" element={<OurWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/job/:jobId" element={<JobDetailPage />} />
         </Routes>
         <Footer />
         <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">
@@ -64,6 +68,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;

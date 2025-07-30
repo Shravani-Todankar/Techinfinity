@@ -26,6 +26,7 @@ const Header = () => {
         <Link to="/service" onClick={closeMobileMenu}>Service</Link>
         <Link to="/our-works" onClick={closeMobileMenu}>Our Works</Link>
         <Link to="/about-us" onClick={closeMobileMenu}>About Us</Link>
+        <Link to="/careers" onClick={closeMobileMenu}>Careers</Link>
       </nav>
 
       <button className="header-button desktop-only">
