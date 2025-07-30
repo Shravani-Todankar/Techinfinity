@@ -331,13 +331,12 @@ const JobDetailPage = () => {
                     </div>
 
                     <div className="application-form-group">
-                        <label className="application-form-label">Cover Letter *</label>
+                        <label className="application-form-label">Cover Letter</label>
                         <textarea
                             className="application-form-textarea"
                             value={formData.coverLetter}
                             onChange={(e) => handleInputChange('coverLetter', e.target.value)}
                             rows={6}
-                            required
                             disabled={isSubmitting}
                             placeholder="Tell us why you're interested in this position and what makes you a great fit for our team..."
                         />
