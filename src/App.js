@@ -5,7 +5,7 @@ import Service from "./services/service"
 import OurWorks from "./works/ourWorks";
 import AboutUs from "./about/aboutUs";
 import Careers from "./career/Careers";
-import JobDetailPage from "./career/JobDetailModal";
+import JobDetailPage from "./career/JobDetailModal.jsx";
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
