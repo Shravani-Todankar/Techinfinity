@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Service from "./services/service"
 import OurWorks from "./works/ourWorks";
@@ -31,12 +31,25 @@ import TechnoboticsLogo from './assets/Falling-Logos/Technobotics.png';
 import SalusLogo from './assets/Falling-Logos/Salus.png';
 import DivaaLogo from './assets/Falling-Logos/Divaa.png';
 import McCoyLogo from './assets/Falling-Logos/McCoy.png';
+import ICICILogo from './assets/Falling-Logos/ICICI.png';
+import BMLogo from './assets/Falling-Logos/BabyMoo.png';
 
 import SectionSix from "./Home/SectionSix";
 import SectionSeven from "./Home/SectionSeven";
 import Footer from "./components/Footer";
 import { initializeAllAnimations } from "./script";
 import "./App.css";
+
+// Component to handle scroll reset on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const Home = () => {
   // Define your images array - replace with your actual image paths
@@ -59,6 +72,8 @@ const Home = () => {
     { src: SalusLogo, alt: "Salus", highlighted: true },
     { src: DivaaLogo, alt: "Divaa", highlighted: false },
     { src: McCoyLogo, alt: "McCoy", highlighted: true },
+    { src: ICICILogo, alt: "ICICI", highlighted: false },
+    { src: BMLogo, alt: "BabyMoo", highlighted: true },
   ];
 
   return (
@@ -109,6 +124,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
