@@ -43,10 +43,26 @@ const Home = () => (
 
 function App() {
   useEffect(() => {
+    // Ensures title is set
     document.title = "Best Digital Marketing Service Provider Agency In Mumbai | Techinfinity";
-    const cleanup = initializeAllAnimations();
-    return cleanup;
+
+    // Fix: Wait for window load before initializing animations
+    const handleLoad = () => {
+      initializeAllAnimations();
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("load", handleLoad);
+    }
+
+    // Cleanup
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+    };
   }, []);
+
 
   return (
     <Router>

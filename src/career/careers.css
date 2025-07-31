@@ -571,9 +571,6 @@
 
 /* Prevent horizontal scroll on mobile */
 @media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
 
     .job-board-page {
         overflow-x: hidden;
