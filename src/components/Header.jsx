@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/TechinfinityLogo.png";
 
@@ -6,6 +6,18 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
   const [isMobileServiceOpen, setIsMobileServiceOpen] = useState(false);
+  
+  const headerRef = useRef(null);
+  const dropdownTimeoutRef = useRef(null);
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,6 +32,8 @@ const Header = () => {
 
   const toggleServiceDropdown = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    
     if (window.innerWidth <= 768) {
       setIsMobileServiceOpen(!isMobileServiceOpen);
     } else {
@@ -29,13 +43,35 @@ const Header = () => {
 
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
+      // Clear any existing timeout
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
       setIsServiceDropdownOpen(true);
     }
   };
 
   const handleMouseLeave = () => {
     if (window.innerWidth > 768) {
-      setIsServiceDropdownOpen(false);
+      // Add a small delay before closing to prevent flickering
+      dropdownTimeoutRef.current = setTimeout(() => {
+        setIsServiceDropdownOpen(false);
+      }, 150);
+    }
+  };
+
+  // Handle dropdown interaction to prevent closing when hovering over dropdown
+  const handleDropdownMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+  };
+
+  const handleDropdownMouseLeave = () => {
+    if (window.innerWidth > 768) {
+      dropdownTimeoutRef.current = setTimeout(() => {
+        setIsServiceDropdownOpen(false);
+      }, 150);
     }
   };
 
@@ -82,7 +118,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="header">
+      <header className="header" ref={headerRef}>
         <div className="logo">
           <Link to="/" onClick={closeMobileMenu}>
             <img src={logo} alt="logo" />
@@ -103,13 +139,18 @@ const Header = () => {
               className="service-toggle"
               onClick={toggleServiceDropdown}
               aria-expanded={isServiceDropdownOpen || isMobileServiceOpen}
+              type="button"
             >
               Services
               <span className={`dropdown-arrow ${isServiceDropdownOpen || isMobileServiceOpen ? 'open' : ''}`}>▼</span>
             </button>
 
             {/* Desktop Dropdown Menu */}
-            <div className={`dropdown-menu-dapper desktop-dropdown ${isServiceDropdownOpen ? 'show' : ''}`}>
+            <div 
+              className={`dropdown-menu-dapper desktop-dropdown ${isServiceDropdownOpen ? 'show' : ''}`}
+              onMouseEnter={handleDropdownMouseEnter}
+              onMouseLeave={handleDropdownMouseLeave}
+            >
               <div className="dropdown-container-dapper">
                 <div className="dropdown-grid-dapper">
                   {services.map((service, index) => (
@@ -119,7 +160,10 @@ const Header = () => {
                           href={service.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={closeMobileMenu}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            closeMobileMenu();
+                          }}
                           className="service-card-link-dapper"
                         >
                           <div className="service-icon-dapper">{service.icon}</div>
@@ -131,7 +175,10 @@ const Header = () => {
                       ) : (
                         <Link
                           to={service.link}
-                          onClick={closeMobileMenu}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            closeMobileMenu();
+                          }}
                           className="service-card-link-dapper"
                         >
                           <div className="service-icon-dapper">{service.icon}</div>
@@ -208,6 +255,7 @@ const Header = () => {
           className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
+          type="button"
         >
           <span></span>
           <span></span>
@@ -222,7 +270,10 @@ const Header = () => {
 
       {/* Desktop Backdrop Blur Overlay */}
       {isServiceDropdownOpen && (
-        <div className="dropdown-backdrop"></div>
+        <div 
+          className="dropdown-backdrop"
+          onClick={() => setIsServiceDropdownOpen(false)}
+        ></div>
       )}
     </>
   );

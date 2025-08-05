@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Service from "./services/Webservice";
@@ -10,7 +10,7 @@ import AboutUs from "./about/aboutUs";
 import Careers from "./career/Careers";
 import JobDetailPage from "./career/JobDetailModal.jsx";
 import ContactUs from "./contact/ContactUs.jsx";
-import LakmeGallery from "./services/Lakme"; // Import the Lakme component
+import LakmeGallery from "./services/Lakme";
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
@@ -57,6 +57,9 @@ const ScrollToTop = () => {
 };
 
 const Home = () => {
+  const homeRef = useRef(null);
+  const animationsInitialized = useRef(false);
+
   // Define your images array - replace with your actual image paths
   const companyImages = [
     { src: WrognLogo, alt: "WROGN", highlighted: false },
@@ -81,8 +84,37 @@ const Home = () => {
     { src: BMLogo, alt: "BabyMoo", highlighted: true },
   ];
 
+  useEffect(() => {
+    // Initialize animations only for home page and only once
+    const initAnimations = () => {
+      if (!animationsInitialized.current) {
+        try {
+          // Add a small delay to ensure DOM is fully rendered
+          setTimeout(() => {
+            initializeAllAnimations();
+            animationsInitialized.current = true;
+          }, 100);
+        } catch (error) {
+          console.error('Error initializing animations:', error);
+        }
+      }
+    };
+
+    // Initialize after component mounts and DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAnimations);
+    } else {
+      initAnimations();
+    }
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener('DOMContentLoaded', initAnimations);
+    };
+  }, []);
+
   return (
-    <>
+    <div ref={homeRef} className="home-container">
       <SectionOne />
       <SectionTwo />
       <SectionThree />
@@ -100,50 +132,54 @@ const Home = () => {
       />
       <SectionSix />
       <SectionSeven />
-    </>
+    </div>
   );
 };
 
 function App() {
+  const appRef = useRef(null);
+
   useEffect(() => {
-    // Ensures title is set
+    // Set title
     document.title = "Best Digital Marketing Service Provider Agency In Mumbai | Techinfinity";
 
-    // Fix: Wait for window load before initializing animations
-    const handleLoad = () => {
-      initializeAllAnimations();
+    // Add error boundary for animations
+    const handleError = (event) => {
+      console.error('Animation error:', event.error);
+      // Prevent the error from crashing the app
+      event.preventDefault();
     };
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("load", handleLoad);
-    }
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleError);
 
     // Cleanup
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
-      }
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleError);
     };
   }, []);
 
   return (
     <Router>
-      <div className="App">
+      <div className="App" ref={appRef}>
         <ScrollToTop />
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/web-development" element={<Service />} />
-          <Route path="/seo" element={<SeoServices />} />
-          <Route path="/performance-marketing" element={<PMServices />} />
-          <Route path="/social-media" element={<SMServices />} />
-          <Route path="/our-work" element={<OurWorks />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/job/:jobId" element={<JobDetailPage />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/lakme" element={<LakmeGallery />} /> {/* Add the new Lakme route */}
-        </Routes>
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/web-development" element={<Service />} />
+            <Route path="/seo" element={<SeoServices />} />
+            <Route path="/performance-marketing" element={<PMServices />} />
+            <Route path="/social-media" element={<SMServices />} />
+            <Route path="/our-work" element={<OurWorks />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/job/:jobId" element={<JobDetailPage />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/lakme" element={<LakmeGallery />} />
+          </Routes>
+        </main>
         <Footer />
         <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">
           <span className="icon">↑</span>
