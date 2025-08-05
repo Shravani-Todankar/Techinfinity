@@ -106,6 +106,7 @@ const Header = () => {
     {
       title: "Real Estate",
       link: "https://techinfinity.studio/real-estate/",
+      external: true,
       icon: "🏢"
     },
     {
