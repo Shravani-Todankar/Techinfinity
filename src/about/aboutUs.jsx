@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './about.css';
 import { initAboutAnimations } from './about.js';
 import DeveloperCarousel from "./Developercarousel.jsx"
@@ -18,6 +18,10 @@ const About = () => {
   const teamRef = useRef(null);
   const dreamRef = useRef(null);
   const directorRef = useRef(null);
+  
+  // Timeline refs and state
+  const timelineContainerRef = useRef(null);
+  const [timelineProgress, setTimelineProgress] = useState(0);
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -36,48 +40,129 @@ const About = () => {
       };
     });
   }, []);
-  
+
+  // Timeline scroll animation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineContainerRef.current) return;
+
+      const container = timelineContainerRef.current;
+      const timelineItems = container.querySelectorAll('.timeline-story-item');
+      
+      if (timelineItems.length === 0) return;
+
+      const containerTop = container.getBoundingClientRect().top + window.scrollY;
+      const containerBottom = container.getBoundingClientRect().bottom + window.scrollY;
+      const currentScroll = window.scrollY + window.innerHeight / 2;
+      
+      // Calculate progress
+      let progress = 0;
+      if (currentScroll >= containerTop && currentScroll <= containerBottom) {
+        progress = (currentScroll - containerTop) / (containerBottom - containerTop);
+      } else if (currentScroll > containerBottom) {
+        progress = 1;
+      }
+      
+      setTimelineProgress(Math.max(0, Math.min(1, progress)));
+
+      // Activate dots based on scroll position
+      timelineItems.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.top + itemRect.height / 2;
+        const dot = item.querySelector('.timeline-story-dot');
+        
+        if (dot) {
+          if (itemCenter <= window.innerHeight / 2 + 100) {
+            dot.classList.add('timeline-story-active');
+          } else {
+            dot.classList.remove('timeline-story-active');
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       <div className="about-container">
-        {/* Our Story Section */}
-        <div className="story-section">
-          <div className="story-content" ref={storyRef}>
-            <h1>Our <em>Story</em></h1>
-            <h3>Introduction</h3>
-            <p>In 2016, three friends—Hemant Shah, Ronak Parikh, and Omkar Pai—embarked on an ambitious entrepreneurial journey. Fresh out of engineering, they founded Techinfinity, a website development and design agency, registered under GfxBandits IT Solutions LLP.
-              With an unshakeable passion, they transformed Techinfinity into a full-fledged digital marketing agency specializing in SEO, performance marketing, social media marketing, and more.</p>
-          </div>
-          <div className="story-image"></div>
+        
+        {/* Centered Our Story Title */}
+        <div className="timeline-main-title">
+          <h1>Our <em>Story</em></h1>
         </div>
 
-        {/* The Journey Section */}
-        <div className="journey-section">
-          <div className="journey-image">
-            <div className="item">Image 1</div>
-            <div className="item">Image 2</div>
-            <div className="item">Image 3</div>
+        {/* Timeline Container */}
+        <div className="timeline-story-container" ref={timelineContainerRef}>
+          
+          {/* Timeline Line */}
+          <div className="timeline-story-line">
+            <div 
+              className="timeline-story-progress" 
+              style={{ height: `${timelineProgress * 100}%` }}
+            ></div>
           </div>
-          <div className="journey-content" ref={journeyRef}>
-            <h3>The Journey</h3>
-            <p>The path was far from smooth. Yet, the trio's determination kept them ahead of the curve. A significant milestone came when they participated in the Startup India Initiative, competing with over 300 startups from Maharashtra.
-              Techinfinity quickly gained recognition, representing Maharashtra Small Scale Industries Development Corporation (MSSIDC) and securing a spot among the Top 60 Startups at the Magnetic Maharashtra Symposium. Their success was further cemented when they were featured in a coffee table book launched by Maharashtra's former Chief Minister, Devendra Fadnavis, in 2017.</p>
-          </div>
-        </div>
 
-        {/* The Future Section */}
-        <div className="future-section">
-          <div className="future-content" ref={futureRef}>
-            <h3>Today and Beyond</h3>
-            <p>From chasing dreams to building a thriving brand, Techinfinity has come a long way. What began as a small startup with just six people in a 300 sq. ft. space has grown into a vibrant team of 42 working from a 1200 sq. ft. office.
-              Today, Techinfinity proudly partners with leading names like the Indian Navy, KFC, Reliance, Orra Jewellery, and Yes Bank. With nine years of growth and learning, the team now aims for international expansion while continuing to deliver exceptional work and uphold the human values that have driven their journey from the start.</p>
+          {/* Introduction Section */}
+          <div className="timeline-story-item story-section" ref={storyRef}>
+            <div className="timeline-story-dot">
+              <span className="timeline-story-number">1</span>
+            </div>
+            <div className="timeline-story-content timeline-story-left">
+              <div className="timeline-story-year">2016</div>
+              <div className="story-content">
+                <h3>Introduction</h3>
+                <p>In 2016, three friends—Hemant Shah, Ronak Parikh, and Omkar Pai—embarked on an ambitious entrepreneurial journey. Fresh out of engineering, they founded Techinfinity, a website development and design agency, registered under GfxBandits IT Solutions LLP.
+                  With an unshakeable passion, they transformed Techinfinity into a full-fledged digital marketing agency specializing in SEO, performance marketing, social media marketing, and more.</p>
+              </div>
+            </div>
+            <div className="story-image"></div>
           </div>
-          <div className="future-image">
-            <div className="future-item">Image 1</div>
-            <div className="future-item">Image 2</div>
-            <div className="future-item">Image 3</div>
+
+          {/* The Journey Section */}
+          <div className="timeline-story-item journey-section" ref={journeyRef}>
+            <div className="timeline-story-dot">
+              <span className="timeline-story-number">2</span>
+            </div>
+            <div className="timeline-story-content timeline-story-right">
+              <div className="timeline-story-year">2017</div>
+              <div className="journey-content">
+                <h3>The Journey</h3>
+                <p>The path was far from smooth. Yet, the trio's determination kept them ahead of the curve. A significant milestone came when they participated in the Startup India Initiative, competing with over 300 startups from Maharashtra.
+                  Techinfinity quickly gained recognition, representing Maharashtra Small Scale Industries Development Corporation (MSSIDC) and securing a spot among the Top 60 Startups at the Magnetic Maharashtra Symposium. Their success was further cemented when they were featured in a coffee table book launched by Maharashtra's former Chief Minister, Devendra Fadnavis, in 2017.</p>
+              </div>
+            </div>
+            <div className="journey-image">
+              <div className="item">Image 1</div>
+              <div className="item">Image 2</div>
+              <div className="item">Image 3</div>
+            </div>
           </div>
+
+          {/* The Future Section */}
+          <div className="timeline-story-item future-section" ref={futureRef}>
+            <div className="timeline-story-dot">
+              <span className="timeline-story-number">3</span>
+            </div>
+            <div className="timeline-story-content timeline-story-left">
+              <div className="timeline-story-year">Today</div>
+              <div className="future-content">
+                <h3>Today and Beyond</h3>
+                <p>From chasing dreams to building a thriving brand, Techinfinity has come a long way. What began as a small startup with just six people in a 300 sq. ft. space has grown into a vibrant team of 42 working from a 1200 sq. ft. office.
+                  Today, Techinfinity proudly partners with leading names like the Indian Navy, KFC, Reliance, Orra Jewellery, and Yes Bank. With nine years of growth and learning, the team now aims for international expansion while continuing to deliver exceptional work and uphold the human values that have driven their journey from the start.</p>
+              </div>
+            </div>
+            <div className="future-image">
+              <div className="future-item">Image 1</div>
+              <div className="future-item">Image 2</div>
+              <div className="future-item">Image 3</div>
+            </div>
+          </div>
+
         </div>
 
         {/* Achievements Section */}

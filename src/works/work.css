@@ -399,3 +399,61 @@ body {
     gap: 0;
   }
 }
+
+
+
+/* newly added CSS */
+
+/* Portfolio item positioning for overlay */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Portfolio overlay for project name */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Project name styling */
+.project-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 20px;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+}
+
+.portfolio-item:hover .project-name {
+  transform: translateY(0);
+}
+
+/* Optional: Add subtle hover effect to the entire item */
+.portfolio-item:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}

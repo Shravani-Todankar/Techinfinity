@@ -25,11 +25,62 @@ const imageCategories = {
   graphic: [4, 10, 14, 24, 34, 44, 54, 64, 74],
 };
 
+// Project names data
+const projectNames = {
+  branding: [
+    'Rapoo', 'Wrogn', 'Mediskin', 
+    'Sarin Skin', 'OneMile', 'Miraggio',
+    'McCoy', 'The Wedding School', 'Indian Oil'
+  ],
+  uiux: [
+    'E-commerce Website', 'Mobile App Interface', 'Dashboard Design', 
+    'User Experience Redesign', 'Web Application UI', 'Mobile UX Research',
+    'Interactive Website', 'App Prototype Design', 'User Interface System'
+  ],
+  power: [
+    'Latest Portfolio Showcase', 'Recent Design Project', 'New Brand Launch',
+    'Modern Web Design', 'Creative Campaign', 'Innovation Project',
+    'Latest UI Design', 'Fresh Brand Identity'
+  ],
+  animation: [
+    '2D Character Animation', '3D Motion Graphics', 'Explainer Video Animation',
+    'Logo Animation Design', 'Product Demo Animation', 'Brand Story Animation',
+    'Interactive Animation', '3D Visual Effects', 'Motion Design Project'
+  ],
+  video: [
+    'Corporate Video Production', 'Product Launch Video', 'Brand Commercial',
+    'Promotional Video Edit', 'Social Media Video', 'Marketing Video Campaign',
+    'Documentary Production', 'Event Highlight Reel'
+  ],
+  arvr: [
+    '3D Product Visualization', 'Architectural Rendering', 'Product 3D Model',
+    '3D Animation Render', 'Realistic 3D Scene', 'Virtual Environment Design',
+    '3D Character Model', 'Product Photography 3D'
+  ],
+  marketing: [
+    'Digital Marketing Campaign', 'Social Media Strategy', 'PPC Campaign Management',
+    'Content Marketing Project', 'SEO Optimization Campaign', 'Email Marketing Design',
+    'Conversion Rate Optimization', 'Brand Awareness Campaign', 'Lead Generation Project'
+  ],
+  graphic: [
+    'Print Design Project', 'Poster Design', 'Business Card Design',
+    'Brochure Layout', 'Packaging Design', 'Magazine Layout',
+    'Advertisement Design', 'Event Graphics', 'Marketing Collateral'
+  ]
+};
+
 const generateImages = () => {
   const all = [];
   Object.entries(imageCategories).forEach(([category, ids]) => {
-    ids.forEach(id => {
-      all.push({ category, id, uniqueKey: `${category}-${id}` });
+    ids.forEach((id, index) => {
+      const categoryProjects = projectNames[category] || [];
+      const projectName = categoryProjects[index] || `${category.charAt(0).toUpperCase() + category.slice(1)} Project ${index + 1}`;
+      all.push({ 
+        category, 
+        id, 
+        uniqueKey: `${category}-${id}`,
+        projectName 
+      });
     });
   });
   return all;
@@ -38,7 +89,7 @@ const generateImages = () => {
 const OurWorks = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [animationTriggered, setAnimationTriggered] = useState(false);
+  const [animationTriggered, setAnimationTriggered] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const portfolioRef = useRef(null);
   const observerRef = useRef(null);
@@ -250,6 +301,11 @@ const OurWorks = () => {
               alt={`Portfolio item ${img.id}`}
               loading="lazy"
             />
+            <div className="portfolio-overlay">
+              <div className="project-name">
+                {img.projectName}
+              </div>
+            </div>
           </div>
         ))}
       </div>
