@@ -8,8 +8,8 @@ const FallingImages = ({
   trigger = "auto",
   backgroundColor = "transparent",
   wireframes = false,
-  gravity = 1,
-  mouseConstraintStiffness = 0.2,
+  gravity = 0.56,
+  mouseConstraintStiffness = 0.9,
   imageWidth = 130,
   imageHeight = 60
 }) => {
@@ -170,7 +170,8 @@ const FallingImages = ({
       elem.style.transform = "none";
     });
 
-    const mouse = Mouse.create(containerRef.current);
+    // Create mouse and mouse constraint
+    const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
       constraint: {
@@ -178,7 +179,6 @@ const FallingImages = ({
         render: { visible: false },
       },
     });
-    render.mouse = mouse;
 
     World.add(engine.world, [
       floor,
@@ -193,6 +193,50 @@ const FallingImages = ({
     Runner.run(runner, engine);
     Render.run(render);
 
+    // Set up canvas for both dragging and scrolling
+    let wheelHandler = null;
+    let mouseDownHandler = null;
+
+    if (render.canvas) {
+      // Allow canvas to receive mouse events for dragging
+      render.canvas.style.pointerEvents = 'auto';
+      render.canvas.style.touchAction = 'pan-y';
+
+      // Define event handlers
+      wheelHandler = (e) => {
+        // If we're not dragging anything, allow scroll to bubble up
+        if (!mouseConstraint.body) {
+          // Let the scroll event bubble up to parent elements
+          return true;
+        } else {
+          // If dragging, prevent scroll
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+
+      mouseDownHandler = (e) => {
+        // Check if mouse is over a physics body
+        const rect = render.canvas.getBoundingClientRect();
+        const mousePosition = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+        
+        const bodies = Matter.Query.point(imageBodies.map(ib => ib.body), mousePosition);
+        
+        if (bodies.length === 0) {
+          // Not over a body, allow event to bubble for potential scrolling
+          e.stopPropagation();
+          return;
+        }
+      };
+
+      // Add event listeners
+      render.canvas.addEventListener('wheel', wheelHandler, { passive: false });
+      render.canvas.addEventListener('mousedown', mouseDownHandler, { passive: true });
+    }
+
     const updateLoop = () => {
       imageBodies.forEach(({ body, elem }) => {
         const { x, y } = body.position;
@@ -206,10 +250,15 @@ const FallingImages = ({
     updateLoop();
 
     return () => {
+      // Clean up event listeners
+      if (render.canvas && wheelHandler && mouseDownHandler) {
+        render.canvas.removeEventListener('wheel', wheelHandler);
+        render.canvas.removeEventListener('mousedown', mouseDownHandler);
+      }
+      
       Render.stop(render);
       Runner.stop(runner);
       if (render.canvas && canvasContainerRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         canvasContainerRef.current.removeChild(render.canvas);
       }
       World.clear(engine.world);
@@ -253,7 +302,16 @@ const FallingImages = ({
           gap: "10px",
         }}
       />
-      <div ref={canvasContainerRef} className="falling-images-canvas" />
+      <div 
+        ref={canvasContainerRef} 
+        className="falling-images-canvas"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 0,
+        }}
+      />
     </div>
   );
 };

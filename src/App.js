@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import Service from "./services/service"
+import Service from "./services/Webservice";
+import SeoServices from "./services/Seoservice";
+import PMServices from "./services/PMservice";
+// import SMServices from "./services/SMservice";
 import OurWorks from "./works/ourWorks";
 import AboutUs from "./about/aboutUs";
 import Careers from "./career/Careers";
 import JobDetailPage from "./career/JobDetailModal.jsx";
+import ContactUs from "./contact/ContactUs.jsx"
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
@@ -128,11 +132,15 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/our-works" element={<OurWorks />} />
+          <Route path="/web-development" element={<Service />} />
+          <Route path="/seo" element={<SeoServices />} />
+          <Route path="/performance-marketing" element={<PMServices />} />
+          {/* <Route path="/social-media" element={<SMServices />} /> */}
+          <Route path="/our-work" element={<OurWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/job/:jobId" element={<JobDetailPage />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
         <Footer />
         <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">

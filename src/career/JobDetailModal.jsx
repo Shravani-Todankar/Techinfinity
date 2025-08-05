@@ -250,38 +250,37 @@ const JobDetailPage = () => {
                 <div className="job-description-text">
                     <p>{job.overview.description}</p>
 
-                    <h4>What makes this role exciting?</h4>
-                    <p>{job.overview.whatMakesRoleExciting}</p>
-
-                    <h4>Key Responsibilities:</h4>
+                    <h4>Responsiblities: </h4>
                     <ul>
-                        {job.overview.keyResponsibilities.map((responsibility, index) => (
+                        {job.overview.whatMakesRoleExciting.map((responsibility, index) => (
                             <li key={index}>{responsibility}</li>
                         ))}
                     </ul>
 
-                    <h4>Requirements:</h4>
-                    <ul>
-                        {job.overview.requirements.map((requirement, index) => (
-                            <li key={index}>{requirement}</li>
-                        ))}
-                    </ul>
-
-                    <h4>Preferred Qualifications:</h4>
+                    <h4>Qualifications:</h4>
                     <ul>
                         {job.overview.preferredQualifications.map((qualification, index) => (
                             <li key={index}>{qualification}</li>
                         ))}
                     </ul>
 
-                    <h4>Benefits:</h4>
+                    <h4>Experience & Skills:</h4>
                     <ul>
-                        {job.overview.benefits.map((benefit, index) => (
+                        {job.overview.skills.map((benefit, index) => (
                             <li key={index}>{benefit}</li>
                         ))}
                     </ul>
 
-                    <p>Ready to take your career to the next level? We'd love to hear from you!</p>
+                    <p>
+                        <strong>
+                            You'll receive a call if you're shortlisted! You can share your resume and work portfolio on &nbsp;
+                            <a href="mailto:hr@techinfinity.io" className="email-link">
+                                hr@techinfinity.io
+                            </a>
+                            <br />
+                            DISCLAIMER: This position is open only for candidates in Mumbai. Applications from other locations will not be considered.
+                        </strong>
+                    </p>
                 </div>
             </div>
         </div>

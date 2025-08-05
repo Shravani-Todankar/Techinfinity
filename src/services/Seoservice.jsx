@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './service.css';
+import './Seoservice.css';
 import CTAform from "../works/form";
 
-// Carousel Component
-const Carousel = () => {
-  const [progress, setProgress] = useState(50);
+// SEO Portfolio Carousel Component
+const SEOPortfolioCarousel = () => {
+  const [progress, setProgress] = useState(0);
   const [active, setActive] = useState(0);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -19,55 +19,55 @@ const Carousel = () => {
   const speedWheel = 0.02;
   const speedDrag = -0.1;
 
-  // Carousel items data
-  const items = [
+  // SEO Portfolio items data
+  const seoProjects = [
     {
-      title: "Rapoo",
+      title: "E-commerce SEO",
       num: "01",
       img: "https://media.istockphoto.com/id/949299844/it/foto/vista-prospettica-dellesterno-delledificio-contemporaneo.jpg?s=612x612&w=0&k=20&c=_DR1aRHuTEV3EYBJo1ZXq1pF4SgwB9EVWQLaBj4sC5g="
     },
     {
-      title: "BespokeBliss",
+      title: "Local SEO",
       num: "02",
       img: "https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY="
     },
     {
-      title: "Derma MD",
+      title: "Technical SEO",
       num: "03",
       img: "https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I="
     },
     {
-      title: "Sarvatra",
+      title: "Content Optimization",
       num: "04",
       img: "https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs="
     },
     {
-      title: "MediSkin",
+      title: "SERP Analysis",
       num: "05",
       img: "https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0="
     },
     {
-      title: "Kunuts",
+      title: "Keyword Research",
       num: "06",
       img: "https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8="
     },
     {
-      title: "Transil",
+      title: "Link Building",
       num: "07",
       img: "https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8="
     },
     {
-      title: "Swaaha",
+      title: "Mobile SEO",
       num: "08",
       img: "https://media.istockphoto.com/id/1191376167/it/foto/villa-dellisola.jpg?s=612x612&w=0&k=20&c=PKslWo4FdbjinohKQlK_oWL34jqAsnzMTdy2bxEAf-I="
     },
     {
-      title: "Happiclap",
+      title: "Page Speed Optimization",
       num: "09",
       img: "https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8="
     },
     {
-      title: "EatProt",
+      title: "Schema Markup",
       num: "10",
       img: "https://media.istockphoto.com/id/184619832/it/foto/distretto-finanziario-al-crepuscolo-londra.jpg?s=612x612&w=0&k=20&c=RAThrJOBY6vhlT6-kQpu9-9jLEzWToYfdw46S8B0Mu0="
     }
@@ -81,9 +81,9 @@ const Carousel = () => {
   // Update active item and progress
   useEffect(() => {
     const clampedProgress = Math.max(0, Math.min(progress, 100));
-    const newActive = Math.floor(clampedProgress / 100 * (items.length - 1));
+    const newActive = Math.floor(clampedProgress / 100 * (seoProjects.length - 1));
     setActive(newActive);
-  }, [progress, items.length]);
+  }, [progress, seoProjects.length]);
 
   // Handle wheel events
   useEffect(() => {
@@ -170,51 +170,51 @@ const Carousel = () => {
 
   // Handle item click
   const handleItemClick = (index) => {
-    const newProgress = (index / items.length) * 100 + 10;
+    const newProgress = (index / seoProjects.length) * 100 + 10;
     setProgress(newProgress);
   };
 
   // Handle navigation buttons
   const handlePrevious = () => {
-    const newActive = active > 0 ? active - 1 : items.length - 1;
-    const newProgress = (newActive / items.length) * 100 + 10;
+    const newActive = active > 0 ? active - 1 : seoProjects.length - 1;
+    const newProgress = (newActive / seoProjects.length) * 100 + 10;
     setProgress(newProgress);
   };
 
   const handleNext = () => {
-    const newActive = active < items.length - 1 ? active + 1 : 0;
-    const newProgress = (newActive / items.length) * 100 + 10;
+    const newActive = active < seoProjects.length - 1 ? active + 1 : 0;
+    const newProgress = (newActive / seoProjects.length) * 100 + 10;
     setProgress(newProgress);
   };
 
   // Calculate item styles
   const getItemStyles = (index) => {
-    const zIndexes = getZindex(items, active);
+    const zIndexes = getZindex(seoProjects, active);
     const zIndex = zIndexes[index];
-    const activeValue = (index - active) / items.length;
-    const opacity = zIndex / items.length * 3 - 2;
+    const activeValue = (index - active) / seoProjects.length;
+    const opacity = zIndex / seoProjects.length * 3 - 2;
 
     return {
       '--zIndex': zIndex,
       '--active': activeValue,
       '--opacity': opacity,
-      '--items': items.length
+      '--items': seoProjects.length
     };
   };
 
   return (
-    <div className="dev-projects-container">
-      <div className="dev-projects-carousel" ref={carouselRef}>
-        {items.map((item, index) => (
+    <div className="seo-portfolio-container">
+      <div className="seo-portfolio-carousel" ref={carouselRef}>
+        {seoProjects.map((item, index) => (
           <div
             key={index}
-            className="dev-projects-item"
+            className="seo-portfolio-item"
             style={getItemStyles(index)}
             onClick={() => handleItemClick(index)}
           >
-            <div className="dev-projects-box">
-              <div className="dev-projects-title">{item.title}</div>
-              <div className="dev-projects-num">{item.num}</div>
+            <div className="seo-portfolio-box">
+              <div className="seo-portfolio-title">{item.title}</div>
+              <div className="seo-portfolio-num">{item.num}</div>
               <img src={item.img} alt={item.title} />
             </div>
           </div>
@@ -222,68 +222,68 @@ const Carousel = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="dev-projects-nav">
-        <button className="dev-projects-nav-btn dev-projects-nav-prev" onClick={handlePrevious}>
+      <div className="seo-portfolio-nav">
+        <button className="seo-portfolio-nav-btn seo-portfolio-nav-prev" onClick={handlePrevious}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        <button className="dev-projects-nav-btn dev-projects-nav-next" onClick={handleNext}>
+        <button className="seo-portfolio-nav-btn seo-portfolio-nav-next" onClick={handleNext}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
 
-      <div className="dev-projects-layout">
-        <div className="dev-projects-text-box">
-          The world's leading brands<br />
-          trust us to deliver<br />
-          exceptional results
+      <div className="seo-portfolio-layout">
+        <div className="seo-portfolio-text-box">
+          Top search engine rankings<br />
+          through data-driven<br />
+          SEO strategies
         </div>
       </div>
 
-      <div className="dev-projects-cursor" ref={cursor1Ref}></div>
-      <div className="dev-projects-cursor dev-projects-cursor2" ref={cursor2Ref}></div>
+      <div className="seo-portfolio-cursor" ref={cursor1Ref}></div>
+      <div className="seo-portfolio-cursor seo-portfolio-cursor2" ref={cursor2Ref}></div>
     </div>
   );
 };
 
-const WebDevelopmentSection = () => {
-  const faqData = [
+const SEOServicesSection = () => {
+  const seoFaqData = [
     {
-      question: "What is included in your web development services?",
+      question: "What is included in your SEO services?",
       answer:
-        "We offer end-to-end web development including UI/UX design, front-end and back-end development, CMS integration, e-commerce solutions, mobile responsiveness, SEO optimization, and ongoing maintenance.",
+        "We offer comprehensive SEO including keyword research, on-page optimization, technical SEO, content strategy, link building, local SEO, and detailed analytics reporting.",
     },
     {
-      question: "How long does it take to build a website?",
+      question: "How long does it take to see SEO results?",
       answer:
-        "It typically takes between 4 to 8 weeks depending on the project scope and client feedback.",
+        "SEO is a long-term strategy. You may see initial improvements in 3-6 months, with significant results typically visible after 6-12 months of consistent optimization.",
     },
     {
-      question: "Do you build mobile-responsive websites?",
+      question: "Do you guarantee first page rankings?",
       answer:
-        "Yes, all our websites are designed to be fully responsive across all devices and screen sizes.",
+        "While we cannot guarantee specific rankings due to search engine algorithm changes, we focus on sustainable, white-hat techniques that improve your overall search visibility.",
     },
     {
-      question: "Will my website be SEO-friendly?",
+      question: "How do you measure SEO success?",
       answer:
-        "Absolutely! We follow best SEO practices during development to ensure your site is optimized for search engines.",
+        "We track organic traffic growth, keyword rankings, click-through rates, conversion rates, and overall ROI to measure the effectiveness of our SEO campaigns.",
     },
     {
-      question: "Can you redesign my existing website?",
+      question: "Do you work with local businesses?",
       answer:
-        "Yes, we offer full website redesign services to modernize the look and improve performance and usability.",
+        "Yes, we specialize in local SEO to help businesses improve their visibility in local search results and Google My Business optimization.",
     },
     {
-      question: "Do you provide website maintenance after launch?",
+      question: "What's the difference between SEO and paid advertising?",
       answer:
-        "Yes, we provide ongoing support and maintenance plans to keep your website secure and up to date.",
+        "SEO focuses on organic search results through optimization, while paid advertising provides immediate visibility through paid placements. SEO provides long-term sustainable results.",
     },
   ];
 
-  const InfinityShape = () => {
+  const SEORankingAnimation = () => {
     const containerRef = useRef(null);
     const totalImages = 28;
     const [dimensions, setDimensions] = useState({ centerX: 300, centerY: 300, radius: 170 });
@@ -305,7 +305,7 @@ const WebDevelopmentSection = () => {
     }, []);
 
     useEffect(() => {
-      const elements = containerRef.current.querySelectorAll(".faq-img");
+      const elements = containerRef.current.querySelectorAll(".seo-faq-img");
       const duration = 8000;
       let startTime = null;
 
@@ -328,20 +328,20 @@ const WebDevelopmentSection = () => {
     }, [dimensions]);
 
     return (
-      <div className="faq-img-container" ref={containerRef}>
+      <div className="seo-faq-img-container" ref={containerRef}>
         {Array.from({ length: totalImages }, (_, index) => (
           <img
             key={index}
             src={`https://picsum.photos/seed/${index + 1}/60/60`}
-            alt={`random-${index}`}
-            className="faq-img"
+            alt={`seo-ranking-${index}`}
+            className="seo-faq-img"
           />
         ))}
       </div>
     );
   };
 
-  const FaqSection = () => {
+  const SEOFaqSection = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     const toggleFAQ = (index) => {
@@ -349,20 +349,20 @@ const WebDevelopmentSection = () => {
     };
 
     return (
-      <div className="faq-container">
-        <div className="faq-left">
-          <h2 className="faq-heading">
+      <div className="seo-faq-container">
+        <div className="seo-faq-left">
+          <h2 className="seo-faq-heading">
             Frequently Asked <span className="italic">Questions</span>
           </h2>
-          <div className="faq-list">
-            {faqData.map((item, index) => (
-              <div className="faq-item" key={index}>
-                <div className="faq-question" onClick={() => toggleFAQ(index)}>
+          <div className="seo-faq-list">
+            {seoFaqData.map((item, index) => (
+              <div className="seo-faq-item" key={index}>
+                <div className="seo-faq-question" onClick={() => toggleFAQ(index)}>
                   <span>{item.question}</span>
                   <span>{openIndex === index ? '−' : '+'}</span>
                 </div>
                 {openIndex === index && (
-                  <div className="faq-answer">{item.answer}</div>
+                  <div className="seo-faq-answer">{item.answer}</div>
                 )}
                 <hr />
               </div>
@@ -370,35 +370,34 @@ const WebDevelopmentSection = () => {
           </div>
         </div>
 
-        <div className="faq-right">
-          <InfinityShape />
+        <div className="seo-faq-right">
+          <SEORankingAnimation />
         </div>
       </div>
     );
   };
 
   return (
-    <section className="webdev-section">
-      <div className="webdev-header">
+    <section className="seo-services-section">
+      <div className="seo-services-header">
         <h1>
-          Web <em>Development</em>
+          SEO <em>Optimization</em>
         </h1>
       </div>
-      <div className="webdev-content">
-        <div className="webdev-benefits">
+      <div className="seo-services-content">
+        <div className="seo-benefits">
           <h4>Benefits</h4>
           <p>
-            We create visually stunning websites designed for <strong>seamless</strong>, lasting experiences that
-            <strong> engage, retain</strong>, and <strong>deliver results</strong>.
+            We deliver <strong>data-driven</strong> SEO strategies that boost your search rankings, increase
+            <strong> organic traffic</strong>, and <strong>maximize ROI</strong> through sustainable optimization.
           </p>
-          {/* <button className="get-in-touch">Get In Touch</button> */}
-          <button className="get-in-touch">
-            Get In Touch
+          <button className="get-consultation">
+            Get Consultation
             {[...Array(6)].map((_, i) => (
-              <div key={i} className={`star-${i + 1}`}>
+              <div key={i} className={`ranking-star-${i + 1}`}>
                 <svg viewBox="0 0 784.11 815.53">
                   <path
-                    className="get-in-touch-fil0"
+                    className="get-consultation-fil0"
                     d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
                   />
                 </svg>
@@ -406,28 +405,28 @@ const WebDevelopmentSection = () => {
             ))}
           </button>
         </div>
-        <div className="webdev-services">
+        <div className="seo-offerings">
           <h4>Services</h4>
           <ul>
-            <li className='firstlist'><span>01</span> Custom Website Development</li>
-            <li><span>02</span> E-Commerce Development</li>
-            <li><span>03</span> CMS Integration</li>
-            <li><span>04</span> Front-End Development</li>
-            <li><span>05</span> Website Maintenance & Support</li>
-            <li><span>06</span> Web Performance Optimization</li>
+            <li className='first-seo-service'><span>01</span> Keyword Research & Strategy</li>
+            <li><span>02</span> On-Page SEO Optimization</li>
+            <li><span>03</span> Technical SEO Audits</li>
+            <li><span>04</span> Content Optimization</li>
+            <li><span>05</span> Link Building & Outreach</li>
+            <li><span>06</span> Local SEO & GMB Optimization</li>
           </ul>
         </div>
       </div>
 
-      {/* Carousel Section - Add this wherever you want it to appear */}
-      <Carousel />
+      {/* SEO Portfolio Carousel Section */}
+      <SEOPortfolioCarousel />
 
-      {/* Mounting the FAQ Section */}
-      <FaqSection />
+      {/* SEO FAQ Section */}
+      <SEOFaqSection />
 
       <CTAform />
     </section>
   );
 };
 
-export default WebDevelopmentSection;
+export default SEOServicesSection;

@@ -4,6 +4,7 @@ import logo from "../assets/TechinfinityLogo.png";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -11,6 +12,20 @@ const Header = () => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsServiceDropdownOpen(false);
+  };
+
+  const toggleServiceDropdown = (e) => {
+    e.preventDefault();
+    setIsServiceDropdownOpen(!isServiceDropdownOpen);
+  };
+
+  const handleMouseEnter = () => {
+    setIsServiceDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsServiceDropdownOpen(false);
   };
 
   return (
@@ -23,13 +38,49 @@ const Header = () => {
 
       <nav className={`nav-links ${isMobileMenuOpen ? 'nav-open' : ''}`}>
         <Link to="/" onClick={closeMobileMenu}>Home</Link>
-        <Link to="/service" onClick={closeMobileMenu}>Service</Link>
-        <Link to="/our-works" onClick={closeMobileMenu}>Our Works</Link>
+        
+        {/* Service Dropdown */}
+        <div 
+          className="service-dropdown"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button 
+            className="service-toggle"
+            onClick={toggleServiceDropdown}
+            aria-expanded={isServiceDropdownOpen}
+          >
+            Services
+            <span className={`dropdown-arrow ${isServiceDropdownOpen ? 'open' : ''}`}>▼</span>
+          </button>
+          
+          <div className={`dropdown-menu ${isServiceDropdownOpen ? 'show' : ''}`}>
+            <Link to="/web-development" onClick={closeMobileMenu}>Web Development</Link>
+            <Link to="/seo" onClick={closeMobileMenu}>SEO</Link>
+            <Link to="/performance-marketing" onClick={closeMobileMenu}>Performance Marketing</Link>
+            <Link to="/social-media" onClick={closeMobileMenu}>Social Media</Link>
+            <a href="https://techinfinity.studio" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>
+              3D & 2D Animation
+            </a>
+            <Link to="/real-estate" onClick={closeMobileMenu}>Real Estate</Link>
+            <a href="https://bespokebliss.in" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>
+              Gifting
+            </a>
+          </div>
+        </div>
+
+        <Link to="/our-work" onClick={closeMobileMenu}>Our Work</Link>
         <Link to="/about-us" onClick={closeMobileMenu}>About Us</Link>
         <Link to="/careers" onClick={closeMobileMenu}>Careers</Link>
+        
+        {/* Mobile Get In Touch Button */}
+        <Link to="/contact-us" className="mobile-get-in-touch-btn mobile-only" onClick={closeMobileMenu}>
+          Get In Touch
+        </Link>
       </nav>
 
-      <button className="header-button desktop-only">
+      {/* Desktop Get In Touch button */}
+      <Link to="/contact-us" className="header-button desktop-only">
         Get In Touch
         {[...Array(6)].map((_, i) => (
           <div key={i} className={`star-${i + 1}`}>
@@ -41,7 +92,7 @@ const Header = () => {
             </svg>
           </div>
         ))}
-      </button>
+      </Link>
 
       {/* Mobile Menu Toggle */}
       <button 

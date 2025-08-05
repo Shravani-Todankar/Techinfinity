@@ -196,7 +196,7 @@ const OurWorks = () => {
   return (
     <div className="works-container">
       <div className="work-heading">
-        <h1>Our <span>Works</span></h1>
+        <h1>Our <span>Work</span></h1>
       </div>
 
       <div className="search-section">

@@ -49,9 +49,14 @@ const Footer = () => {
             <h3 style={{ marginTop: 30 }}>Career</h3>
             <p>Looking for a job opportunity?</p>
             <p>
-              <a href="#" className="career-link">
+              <Link to="/careers" className="career-link">
+                <p>
                 See open positions
-              </a>
+                </p>
+              </Link>
+              {/* <a href="/career" className="career-link">
+                See open positions
+              </a> */}
             </p>
           </div>
 

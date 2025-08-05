@@ -61,9 +61,9 @@ html {
 .header-button {
   font-family: 'Helvetica Neue', sans-serif;
   position: relative;
-  padding: 12px 25px;
+  padding: 8px 25px;
   background: #3793D0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 550;
   color: #fff;
   border: 3px solid #3793D0;
@@ -71,6 +71,7 @@ html {
   box-shadow: 0 0 0 #3793D0;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .star-1 {
@@ -209,6 +210,41 @@ html {
 .fil0 {
   fill: #3793D0;
 }
+
+/* Mobile Get In Touch Button Styles */
+.mobile-get-in-touch-btn {
+  display: none;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: #3793D0;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 550;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid #3793D0;
+  font-family: 'Helvetica Neue', sans-serif;
+  width: 40%;
+  align-self: flex-start;
+}
+
+.mobile-get-in-touch-btn:hover {
+  background: #61adff;
+  border-color: #61adff;
+  color: #000;
+}
+
+/* Show/Hide classes for responsive design */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
 
 /* ===== FIRST SECTION STYLES ===== */
 #section-one {
@@ -708,7 +744,7 @@ section.section-three {
   height: auto;
 }
 
-.w-full.bg-white{
+.w-full.bg-white {
   width: 100vw;
 }
 
@@ -892,12 +928,12 @@ section.section-three {
 /* section-six */
 .section-six {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 170px;
+  margin-top: 180px;
 }
 
 .infinity-shape {
@@ -1391,7 +1427,8 @@ textarea {
   text-decoration: underline;
 }
 
-.career-link {
+.career-link,
+.career-link p {
   color: #3498db;
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -1586,6 +1623,11 @@ textarea {
   #infinity-container {
     height: 300px;
     margin-top: 40px;
+  }
+
+  .img-item {
+    width: 48px;
+    height: 55px;
   }
 
   .center-text {
@@ -1932,9 +1974,21 @@ textarea {
     display: flex;
   }
 
-  /* Hide desktop header button */
+  /* header button */
+  .mobile-only {
+    display: block;
+  }
+
   .desktop-only {
     display: none;
+  }
+
+  .mobile-get-in-touch-btn {
+    display: block;
+    color: #fff !important;
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+    width: 80% !important;
   }
 
   /* Show mobile overlay when menu is open */
@@ -2078,5 +2132,126 @@ textarea {
     margin-top: -150px;
     transform: scale(0.4);
     border-radius: 10px;
+  }
+}
+
+/* Service Dropdown Styles */
+.service-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.service-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding-top: 5px;
+}
+
+.service-toggle:hover {
+  color: #007bff;
+  /* Adjust to match your theme */
+}
+
+.dropdown-arrow {
+  font-size: 0.9em;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 300px;
+  font-size: 15px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  font-size: 18px;
+  padding: 10px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+  color: #007bff;
+  /* Adjust to match your theme */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .service-dropdown {
+    width: 100%;
+  }
+
+  .service-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 0;
+    margin-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .dropdown-menu.show {
+    max-height: 400px;
+    /* Adjust based on content */
+  }
+
+  .dropdown-menu a {
+    padding: 8px 0;
+    color: inherit;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+  }
+
+  .dropdown-menu a:hover {
+    background: none;
+    border-left-color: #007bff;
+    /* Adjust to match your theme */
   }
 }

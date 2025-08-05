@@ -1,0 +1,770 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+  }
+  
+  .seo-services-section {
+    padding: 60px 0px;
+    font-family: 'Helvetica Neue', sans-serif;
+    background: #fff;
+    margin: 0 auto;
+  }
+  
+  .seo-services-header{
+    padding: 0px 80px;
+  }
+  
+  .seo-services-header h1 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+  
+  .seo-services-header em {
+    font-family: 'DM Serif Display', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  
+  .seo-services-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 0px 80px;
+  }
+  
+  .seo-benefits,
+  .seo-offerings {
+    flex: 1 1 45%;
+    min-width: 300px;
+  }
+  
+  .seo-benefits {
+    padding-right: 95px;
+  }
+  
+  .seo-benefits h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #222;
+  }
+  
+  .seo-offerings h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #222;
+  }
+  
+  .seo-benefits p {
+    color: #888;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .seo-benefits strong {
+    color: #000;
+  }
+  
+  /* .get-consultation {
+    background: #3793d0;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .get-consultation:hover {
+    background: #61adff;
+    color: #000;
+  } */
+  
+  .get-consultation {
+    font-family: 'Helvetica Neue', sans-serif;
+    position: relative;
+    padding: 12px 25px;
+    background: #3793D0;
+    font-size: 18px;
+    font-weight: 550;
+    color: #fff;
+    border: 3px solid #3793D0;
+    border-radius: 25px;
+    box-shadow: 0 0 0 #3793D0;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .ranking-star-1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+  }
+  
+  .ranking-star-2 {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .ranking-star-3 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .ranking-star-4 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .ranking-star-5 {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .ranking-star-6 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.8s ease;
+  }
+  
+  .get-consultation:hover {
+    background: #61adff;
+    color: #000;
+    box-shadow: 0 0 25px #61adff;
+    border: 3px solid #61adff;
+  }
+  
+  .get-consultation:hover .ranking-star-1 {
+    position: absolute;
+    top: -80%;
+    left: -30%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .get-consultation:hover .ranking-star-2 {
+    position: absolute;
+    top: -25%;
+    left: 10%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .get-consultation:hover .ranking-star-3 {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .get-consultation:hover .ranking-star-4 {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .get-consultation:hover .ranking-star-5 {
+    position: absolute;
+    top: 25%;
+    left: 115%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  .get-consultation:hover .ranking-star-6 {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .get-consultation-fil0 {
+    fill: #3793D0;
+  }
+  
+  .seo-offerings ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .seo-offerings li {
+    font-size: 1.2rem;
+    padding: 23px 0;
+    border-bottom: 1px solid #C1C1C1;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-weight: 550;
+    letter-spacing: 1.2px;
+  }
+  
+  li.first-seo-service {
+    border-top: 1px solid #C1C1C1;
+  }
+  
+  .seo-offerings li span {
+    color: #888;
+    font-weight: 400;
+    min-width: 30px;
+  }
+  
+  /* seo faq section */
+  .seo-faq-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding: 0px 80px;
+  }
+  
+  .seo-faq-left {
+    flex: 1;
+    max-width: 1200px;
+  }
+  
+  .seo-faq-heading {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  
+  .seo-faq-heading .italic {
+    font-style: italic;
+    font-family: 'DM Serif Display', sans-serif;
+    font-weight: 500;
+  }
+  
+  .seo-faq-question {
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .seo-faq-answer {
+    font-size: 1rem;
+    color: #666;
+    padding: 0px 20px 20px 20px;
+  }
+  
+  .seo-faq-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 600px;
+  }
+  
+  .seo-faq-img-container {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+  }
+  
+  .seo-faq-img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+  }
+  
+  .seo-faq-img:hover {
+    transform: scale(1.2);
+    z-index: 2;
+  }
+  
+  /* Enhanced seo portfolio carousel with scroll pinning */
+  .seo-portfolio-container {
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /* Height will be set dynamically via JavaScript */
+  }
+  
+  .seo-portfolio-container.pinned {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: #fff; /* Adjust as per design */
+  }
+  
+  .seo-portfolio-carousel {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .seo-portfolio-carousel.pinned {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+  }
+  
+  .seo-portfolio-item {
+    --items: 10;
+    --width: clamp(150px, 30vw, 245px);
+    --height: clamp(200px, 40vw, 295px);
+    --x: calc(var(--active) * 800%);
+    --y: calc(var(--active) * 200%);
+    --rot: calc(var(--active) * 120deg);
+    --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
+    overflow: hidden;
+    position: absolute;
+    z-index: var(--zIndex);
+    width: var(--width);
+    height: var(--height);
+    margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    user-select: none;
+    transform-origin: 0% 100%;
+    box-shadow: 0 10px 20px 10px rgb(209, 233, 250, .5);
+    background: black;
+    pointer-events: all;
+    transform: translate(var(--x), var(--y)) rotate(var(--rot));
+    transition: transform .8s cubic-bezier(0, 0.02, 0, 1);
+  }
+  
+  .seo-portfolio-box {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    opacity: var(--opacity);
+    font-family: 'Orelo-sw-db', serif;
+  }
+  
+  .seo-portfolio-box:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5));
+  }
+  
+  .seo-portfolio-title {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    bottom: 20px;
+    left: 20px;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 3vw, 30px);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+  }
+  
+  .seo-portfolio-num {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    top: 10px;
+    left: 20px;
+    transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
+    font-size: clamp(20px, 10vw, 80px);
+  }
+  
+  .seo-portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  
+  .seo-portfolio-layout {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .seo-portfolio-layout.pinned {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 998;
+  }
+  
+  .seo-portfolio-layout:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 90px;
+    width: 10px;
+    height: 100%;
+    border: 1px solid #fff;
+    border-top: none;
+    border-bottom: none;
+    opacity: .15;
+  }
+  
+  .seo-portfolio-text-box {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    color: #fff;
+    transform-origin: 0% 10%;
+    transform: rotate(-90deg);
+    font-size: 9px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: .4;
+  }
+  
+  /* Progress Indicator */
+  .seo-portfolio-progress {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .seo-portfolio-progress.pinned {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    z-index: 1001;
+  }
+  
+  .seo-progress-bar {
+    width: 4px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  
+  .seo-progress-fill {
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    border-radius: 2px;
+    transition: height 0.3s ease;
+  }
+  
+  .seo-progress-text {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Navigation Buttons */
+  .seo-portfolio-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+  }
+  
+  .seo-portfolio-nav.pinned {
+    position: fixed;
+    bottom: 20px;
+    left: 10%;
+    transform: translateX(-50%);
+    z-index: 1001;
+  }
+  
+  .seo-portfolio-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #cee6ff;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    color: #007bff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .seo-portfolio-nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #007bff;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px #ebf5ff;
+  }
+  
+  .seo-portfolio-nav-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .seo-portfolio-nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Custom Cursors */
+  .seo-portfolio-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1002;
+    mix-blend-mode: difference;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+  
+  .seo-portfolio-cursor.pinned {
+    position: fixed;
+    opacity: 1;
+  }
+  
+  .seo-portfolio-cursor2 {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .seo-services-section {
+      padding: 60px 0px;
+    }
+  
+    .seo-services-header{
+      padding: 0px 20px;
+    }
+  
+    .seo-services-header h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+    }
+  
+    .seo-benefits {
+      padding-right: 0px;
+    }
+  
+    .seo-benefits p {
+      color: #888;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+  
+    .seo-offerings {
+      margin-top: 20%;
+    }
+  
+    .seo-offerings h4 {
+      margin-bottom: 30px;
+    }
+  
+    .seo-offerings li {
+      font-size: 0.9rem;
+      font-weight: 510;
+    }
+  
+    .seo-faq-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 0px 20px;
+    }
+  
+    .seo-faq-left,
+    .seo-faq-right {
+      width: 100%;
+    }
+  
+    .seo-faq-heading {
+      font-size: 1.5rem;
+      text-align: left;
+    }
+  
+    .seo-faq-question {
+      font-size: 0.9rem;
+      padding: 20px 10px 20px 10px;
+    }
+  
+    .seo-faq-answer {
+      font-size: 0.9rem;
+      padding: 20px 10px 20px 10px;
+    }
+  
+    .seo-faq-right{
+      min-height: 0;
+    }
+  
+    .seo-faq-img-container {
+      height: 350px;
+      margin-left: -30px;
+    }
+  
+    .seo-faq-img {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .seo-services-content{
+      padding: 0px 20px;
+      margin-top: 30px;
+    }
+  
+    .seo-portfolio-container{
+      margin-top: 0%;
+      margin-bottom: 10%;
+    }
+  
+    .seo-portfolio-carousel{
+      height: 80vh;
+    }
+  
+    .seo-portfolio-carousel.pinned {
+      height: 100vh;
+    }
+  
+    .seo-portfolio-nav {
+      bottom: 20px;
+      left: 25%;
+      gap: 15px;
+    }
+    
+    .seo-portfolio-nav-btn {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .seo-portfolio-nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .seo-portfolio-progress {
+      right: 20px;
+    }
+  
+    .seo-progress-bar {
+      height: 150px;
+    }
+  
+    .seo-progress-text {
+      font-size: 12px;
+    }
+  
+    .seo-portfolio-cursor {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .seo-portfolio-cursor2 {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .get-consultation{
+      padding: 8px 20px;
+      font-size: 15px;
+    }
+  }
