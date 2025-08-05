@@ -78,11 +78,6 @@ const LakmeGallery = () => {
                             />
                         </div>
                     )}
-
-                    {/* Item counter overlay */}
-                    <div className="lakme-counter">
-                        {index + 1} / {galleryItems.length}
-                    </div>
                 </div>
             ))}
         </div>
