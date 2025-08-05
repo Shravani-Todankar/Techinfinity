@@ -46,7 +46,7 @@ const Footer = () => {
                 info@techinfinity.io
               </a>
             </p>
-            <h3 style={{ marginTop: 30 }}>Career</h3>
+            <h3 style={{ marginTop: 30 }}>Careers</h3>
             <p>Looking for a job opportunity?</p>
             <p>
               <Link to="/careers" className="career-link">

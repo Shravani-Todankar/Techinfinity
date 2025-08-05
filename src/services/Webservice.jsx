@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import
 import './Webservice.css';
 import CTAform from "../works/form";
 
@@ -14,62 +15,73 @@ const Carousel = () => {
   const carouselRef = useRef(null);
   const cursor1Ref = useRef(null);
   const cursor2Ref = useRef(null);
+  const navigate = useNavigate(); // Add this hook
 
   // Constants
   const speedWheel = 0.02;
   const speedDrag = -0.1;
 
-  // Carousel items data
+  // Carousel items data - Updated with route information
   const items = [
     {
-      title: "Rapoo",
+      title: "Lakme",
       num: "01",
-      img: "https://media.istockphoto.com/id/949299844/it/foto/vista-prospettica-dellesterno-delledificio-contemporaneo.jpg?s=612x612&w=0&k=20&c=_DR1aRHuTEV3EYBJo1ZXq1pF4SgwB9EVWQLaBj4sC5g="
+      img: "https://media.istockphoto.com/id/949299844/it/foto/vista-prospettica-dellesterno-delledificio-contemporaneo.jpg?s=612x612&w=0&k=20&c=_DR1aRHuTEV3EYBJo1ZXq1pF4SgwB9EVWQLaBj4sC5g=",
+      route: "/lakme" // Add route for Lakme
     },
     {
       title: "BespokeBliss",
       num: "02",
-      img: "https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY="
+      img: "https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY=",
+      route: null // No route yet
     },
     {
       title: "Derma MD",
       num: "03",
-      img: "https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I="
+      img: "https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I=",
+      route: null
     },
     {
       title: "Sarvatra",
       num: "04",
-      img: "https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs="
+      img: "https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs=",
+      route: null
     },
     {
       title: "MediSkin",
       num: "05",
-      img: "https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0="
+      img: "https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0=",
+      route: null
     },
     {
-      title: "Kunuts",
+      title: "Rapoo",
       num: "06",
-      img: "https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8="
+      img: "https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8=",
+      route: null
     },
     {
       title: "Transil",
       num: "07",
-      img: "https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8="
+      img: "https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8=",
+      route: null
     },
     {
       title: "Swaaha",
       num: "08",
-      img: "https://media.istockphoto.com/id/1191376167/it/foto/villa-dellisola.jpg?s=612x612&w=0&k=20&c=PKslWo4FdbjinohKQlK_oWL34jqAsnzMTdy2bxEAf-I="
+      img: "https://media.istockphoto.com/id/1191376167/it/foto/villa-dellisola.jpg?s=612x612&w=0&k=20&c=PKslWo4FdbjinohKQlK_oWL34jqAsnzMTdy2bxEAf-I=",
+      route: null
     },
     {
       title: "Happiclap",
       num: "09",
-      img: "https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8="
+      img: "https://media.istockphoto.com/id/184316397/it/foto/londra-edifici-aziendali.jpg?s=612x612&w=0&k=20&c=XqrRxEPzFnwRFk7PQrCiu9-FPfCTPyMe5BKKaxYXCs8=",
+      route: null
     },
     {
       title: "EatProt",
       num: "10",
-      img: "https://media.istockphoto.com/id/184619832/it/foto/distretto-finanziario-al-crepuscolo-londra.jpg?s=612x612&w=0&k=20&c=RAThrJOBY6vhlT6-kQpu9-9jLEzWToYfdw46S8B0Mu0="
+      img: "https://media.istockphoto.com/id/184619832/it/foto/distretto-finanziario-al-crepuscolo-londra.jpg?s=612x612&w=0&k=20&c=RAThrJOBY6vhlT6-kQpu9-9jLEzWToYfdw46S8B0Mu0=",
+      route: null
     }
   ];
 
@@ -168,8 +180,17 @@ const Carousel = () => {
     }
   }, [cursorPosition]);
 
-  // Handle item click
+  // Handle item click - Updated to navigate to route if available
   const handleItemClick = (index) => {
+    const item = items[index];
+    
+    // If the item has a route, navigate to it
+    if (item.route) {
+      navigate(item.route);
+      return;
+    }
+    
+    // Otherwise, just update the carousel position
     const newProgress = (index / items.length) * 100 + 10;
     setProgress(newProgress);
   };
@@ -209,13 +230,30 @@ const Carousel = () => {
           <div
             key={index}
             className="dev-projects-item"
-            style={getItemStyles(index)}
+            style={{
+              ...getItemStyles(index),
+              cursor: item.route ? 'pointer' : 'default' // Change cursor for clickable items
+            }}
             onClick={() => handleItemClick(index)}
           >
             <div className="dev-projects-box">
               <div className="dev-projects-title">{item.title}</div>
               <div className="dev-projects-num">{item.num}</div>
               <img src={item.img} alt={item.title} />
+              {/* Add a subtle indicator for clickable items */}
+              {item.route && (
+                <div style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  color: 'white',
+                  fontSize: '12px',
+                  opacity: 0.7,
+                  pointerEvents: 'none'
+                }}>
+                  ↗
+                </div>
+              )}
             </div>
           </div>
         ))}

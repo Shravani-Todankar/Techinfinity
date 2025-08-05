@@ -381,7 +381,7 @@ const SEOServicesSection = () => {
     <section className="seo-services-section">
       <div className="seo-services-header">
         <h1>
-          SEO <em>Optimization</em>
+          Search Engine <em>Optimization</em>
         </h1>
       </div>
       <div className="seo-services-content">

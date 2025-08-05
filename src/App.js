@@ -4,12 +4,13 @@ import Header from "./components/Header";
 import Service from "./services/Webservice";
 import SeoServices from "./services/Seoservice";
 import PMServices from "./services/PMservice";
-// import SMServices from "./services/SMservice";
+import SMServices from "./services/SMservice";
 import OurWorks from "./works/ourWorks";
 import AboutUs from "./about/aboutUs";
 import Careers from "./career/Careers";
 import JobDetailPage from "./career/JobDetailModal.jsx";
-import ContactUs from "./contact/ContactUs.jsx"
+import ContactUs from "./contact/ContactUs.jsx";
+import LakmeGallery from "./services/Lakme"; // Import the Lakme component
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
@@ -135,12 +136,13 @@ function App() {
           <Route path="/web-development" element={<Service />} />
           <Route path="/seo" element={<SeoServices />} />
           <Route path="/performance-marketing" element={<PMServices />} />
-          {/* <Route path="/social-media" element={<SMServices />} /> */}
+          <Route path="/social-media" element={<SMServices />} />
           <Route path="/our-work" element={<OurWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/job/:jobId" element={<JobDetailPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/lakme" element={<LakmeGallery />} /> {/* Add the new Lakme route */}
         </Routes>
         <Footer />
         <button id="goToTopBtn" className="go-to-top" aria-label="Go to top">

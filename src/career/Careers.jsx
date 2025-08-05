@@ -154,9 +154,9 @@ const JobListingsPage = () => {
       <div className="careers-hero-section">
         <div className="careers-content">
           {/* Careers Breadcrumb */}
-          <div className="careers-breadcrumb">
+          {/* <div className="careers-breadcrumb">
             <span>• Careers</span>
-          </div>
+          </div> */}
 
           {/* Main Heading */}
           <h1 className="careers-title">
