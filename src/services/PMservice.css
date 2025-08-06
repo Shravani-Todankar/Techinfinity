@@ -27,6 +27,41 @@ body {
     font-weight: 400;
 }
 
+/* Performance Marketing TextScramble Styles */
+.performance-marketing-text-scramble-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    padding-bottom: 2rem;
+    text-align: left;
+}
+
+.performance-marketing-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dud {
+    color: #757575;
+}
+
+/* Special styling for "Performance Marketing" with different fonts */
+.performance-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.marketing-text-final {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+}
+
 .marketing-services-content {
     display: flex;
     flex-wrap: wrap;
@@ -645,6 +680,16 @@ li.first-marketing-service {
         font-weight: 400;
     }
 
+    /* Performance Marketing TextScramble responsive styles */
+    .performance-marketing-text {
+        font-size: 3rem;
+    }
+
+    .performance-marketing-text-scramble-container {
+        padding-bottom: 1.5rem;
+        min-height: 150px;
+    }
+
     .marketing-benefits {
         padding-right: 0px;
     }
@@ -768,5 +813,17 @@ li.first-marketing-service {
     .schedule-strategy-call {
         padding: 8px 20px;
         font-size: 15px;
+    }
+}
+
+/* Additional mobile responsive for Performance Marketing TextScramble */
+@media (max-width: 480px) {
+    .performance-marketing-text {
+        font-size: 2rem;
+    }
+
+    .performance-marketing-text-scramble-container {
+        padding: 1rem;
+        min-height: 120px;
     }
 }

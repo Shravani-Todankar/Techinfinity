@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './work.css';
 import Sectionseven from "./form";
+import WorkTextScramble from "./WorkTextScramble";
 
 const categories = [
   { label: 'All', value: 'all' },
@@ -246,9 +247,11 @@ const OurWorks = () => {
 
   return (
     <div className="works-container">
-      <div className="work-heading">
+      {/* <div className="work-heading">
         <h1>Our <span>Work</span></h1>
-      </div>
+      </div> */}
+
+      <WorkTextScramble />
 
       <div className="search-section">
         <div className="search-container">

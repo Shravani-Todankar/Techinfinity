@@ -134,7 +134,7 @@ const CsTeamCarousel = () => {
 
   return (
     <div className="clientservice-team-carousel" ref={containerRef}>
-      <h3 className='clientservice-head'>Client Service Team</h3>
+      <h3 className='clientservice-head'>Client Servicing Team</h3>
       <div
         className="clientservice-team-carousel__track"
         ref={trackRef}

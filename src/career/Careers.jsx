@@ -215,12 +215,15 @@ const JobListingsPage = () => {
 
           {/* Filters */}
           <div className="job-filters-container">
-            <FilterDropdown
+            <div className='location-CR'>
+              <p>Charni Road</p>
+            </div>
+            {/* <FilterDropdown
               label="Location"
               value={filters.location}
               onChange={(value) => handleFilterChange('location', value)}
               options={['Charni Road']}
-            />
+            /> */}
             <FilterDropdown
               label="Department"
               value={filters.department}

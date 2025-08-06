@@ -152,7 +152,7 @@ const Developercarousel = () => {
 
   return (
     <div className="developer-team-carousel" ref={containerRef}>
-      <h3 className="developer-head">Developer Team</h3>
+      <h3 className="developer-head">Development Team</h3>
       <div
         className="developer-team-carousel__track"
         ref={trackRef}

@@ -339,6 +339,8 @@ body {
 .hemant img {
     width: 330px;
     height: 450px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .director-designation {
@@ -528,13 +530,15 @@ body {
 }
 
 .timeline-main-title h1 {
-    font-size: 3.5rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 4.5rem;
     margin: 0;
     color: #212529;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .timeline-main-title h1 em {
+    font-family: 'DM Serif Display', sans-serif !important;
     font-style: italic;
     color: black;
 }
@@ -565,8 +569,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #6c757d;
-    transition: height 0.3s ease;
+    background: linear-gradient(45deg, #007bff, #000000);
+    transition: height 0.6s ease;
 }
 
 /* Timeline Items */
@@ -597,12 +601,12 @@ body {
 }
 
 .timeline-story-dot.timeline-story-active {
-    border-color: #6c757d;
-    background-color: #6c757d;
+    border-color: #007bff;
+    background-color: #007bff;
 }
 
 .timeline-story-dot.timeline-story-active .timeline-story-number {
-    color: #ffffff;
+    color: #fff;
 }
 
 /* Timeline Numbers - Clear and Readable */
@@ -688,7 +692,7 @@ body {
 /* Hover Effects - Subtle */
 .timeline-story-dot:hover {
     transform: translate(-50%, -50%) scale(1.1);
-    border-color: #495057;
+    border-color: #78b9ff8e;
 }
 
 .timeline-story-content:hover {

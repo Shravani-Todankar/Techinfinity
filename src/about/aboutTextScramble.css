@@ -1,0 +1,56 @@
+.aboutus-text-scramble-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding-bottom: 2rem;
+    text-align: left;
+}
+
+.aboutus-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dud {
+    color: #757575;
+}
+
+/* Special styling for "About Us" */
+.about-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.us-text-final {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .aboutus-text {
+        font-size: 3rem;
+    }
+
+    .aboutus-text-scramble-container {
+        padding-bottom: 1.5rem;
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutus-text {
+        font-size: 2rem;
+    }
+
+    .aboutus-text-scramble-container {
+        padding: 1rem;
+        min-height: 120px;
+    }
+}

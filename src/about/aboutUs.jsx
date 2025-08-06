@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './about.css';
 import { initAboutAnimations } from './about.js';
+import AboutTextScramble from "./aboutTextScramble.jsx";
 import DeveloperCarousel from "./Developercarousel.jsx"
 import SeoCarousel from "./SeoCarousel";
 import GraphicCarousel from "./GraphicCarousel";
 import CsCarousel from "./CsCarousel";
 import icon from "../assets/achievementicon.png";
-import d1 from "../assets/directors-temp.jpg";
+import d1 from "../assets/Ronak Parekh.jpeg";
+import d2 from "../assets/Hemant Shah.jpeg";
+import d3 from "../assets/Omkar Pai.jpeg";
 import Contactform from "../works/form.jsx";
 
 const About = () => {
@@ -93,7 +96,7 @@ const About = () => {
         
         {/* Centered Our Story Title */}
         <div className="timeline-main-title">
-          <h1>Our <em>Story</em></h1>
+          <AboutTextScramble />
         </div>
 
         {/* Timeline Container */}
@@ -228,14 +231,14 @@ const About = () => {
               </div>
             </div>
             <div className="omkar">
-              <img src={d1} alt='omkar' />
+              <img src={d2} alt='omkar' />
               <div className="director-designation">
                 <p className='director-name'>Omkar Pai</p>
                 <p>Director</p>
               </div>
             </div>
             <div className="hemant">
-              <img src={d1} alt='hemant' />
+              <img src={d3} alt='hemant' />
               <div className="director-designation">
                 <p className='director-name'>Hemant Shah</p>
                 <p>Director</p>

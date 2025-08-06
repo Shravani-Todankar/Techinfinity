@@ -12,7 +12,7 @@ body {
   margin: 0 auto;
 }
 
-.webdev-header{
+.webdev-header {
   padding: 0px 80px;
 }
 
@@ -24,6 +24,41 @@ body {
 .webdev-header em {
   font-family: 'DM Serif Display', sans-serif;
   font-style: italic;
+  font-weight: 400;
+}
+
+/* TextScramble Styles */
+.webdev-text-scramble-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  padding-bottom: 2rem;
+  text-align: left;
+}
+
+.webdev-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dud {
+  color: #757575;
+}
+
+/* Special styling for "Web Development" with different fonts */
+.web-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.dev-text-final {
+  font-family: 'DM Serif Display', serif;
   font-weight: 400;
 }
 
@@ -226,6 +261,7 @@ body {
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
+
 .get-in-touch:hover .star-6 {
   position: absolute;
   top: 5%;
@@ -358,7 +394,8 @@ li.firstlist {
   left: 0;
   width: 100%;
   z-index: 10;
-  background: #fff; /* Adjust as per design */
+  background: #fff;
+  /* Adjust as per design */
 }
 
 .dev-projects-carousel {
@@ -634,13 +671,23 @@ li.firstlist {
     padding: 60px 0px;
   }
 
-  .webdev-header{
+  .webdev-header {
     padding: 0px 20px;
   }
 
   .webdev-header h1 {
     font-size: 2.2rem;
     font-weight: 400;
+  }
+
+  /* TextScramble responsive styles */
+  .webdev-text {
+    font-size: 3rem;
+  }
+
+  .webdev-text-scramble-container {
+    padding-bottom: 1.5rem;
+    min-height: 150px;
   }
 
   .webdev-benefits {
@@ -693,7 +740,7 @@ li.firstlist {
     padding: 20px 10px 20px 10px;
   }
 
-  .faq-right{
+  .faq-right {
     min-height: 0;
   }
 
@@ -707,17 +754,17 @@ li.firstlist {
     height: 30px;
   }
 
-  .webdev-content{
+  .webdev-content {
     padding: 0px 20px;
     margin-top: 30px;
   }
 
-  .dev-projects-container{
+  .dev-projects-container {
     margin-top: 0%;
     margin-bottom: 10%;
   }
 
-  .dev-projects-carousel{
+  .dev-projects-carousel {
     height: 80vh;
   }
 
@@ -730,12 +777,12 @@ li.firstlist {
     left: 25%;
     gap: 15px;
   }
-  
+
   .dev-projects-nav-btn {
     width: 30px;
     height: 30px;
   }
-  
+
   .dev-projects-nav-btn svg {
     width: 20px;
     height: 20px;
@@ -763,8 +810,20 @@ li.firstlist {
     height: 30px;
   }
 
-  .get-in-touch{
+  .get-in-touch {
     padding: 8px 20px;
     font-size: 15px;
+  }
+}
+
+/* Additional mobile responsive for TextScramble */
+@media (max-width: 480px) {
+  .webdev-text {
+    font-size: 2rem;
+  }
+
+  .webdev-text-scramble-container {
+    padding: 1rem;
+    min-height: 120px;
   }
 }

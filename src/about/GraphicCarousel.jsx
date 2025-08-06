@@ -134,7 +134,7 @@ const GraphicTeamCarousel = () => {
 
   return (
     <div className="graphic-team-carousel" ref={containerRef}>
-      <h3 className='graphic-head'>Graphic Team</h3>
+      <h3 className='graphic-head'>Design Team</h3>
       <div
         className="graphic-team-carousel__track"
         ref={trackRef}

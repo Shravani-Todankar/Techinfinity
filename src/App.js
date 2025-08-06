@@ -38,6 +38,7 @@ import DivaaLogo from './assets/Falling-Logos/Divaa.png';
 import McCoyLogo from './assets/Falling-Logos/McCoy.png';
 import ICICILogo from './assets/Falling-Logos/ICICI.png';
 import BMLogo from './assets/Falling-Logos/BabyMoo.png';
+import LegrandLogo from './assets/Falling-Logos/Legrand.png';
 
 import SectionSix from "./Home/SectionSix";
 import SectionSeven from "./Home/SectionSeven";
@@ -82,6 +83,7 @@ const Home = () => {
     { src: McCoyLogo, alt: "McCoy", highlighted: true },
     { src: ICICILogo, alt: "ICICI", highlighted: false },
     { src: BMLogo, alt: "BabyMoo", highlighted: true },
+    { src: LegrandLogo, alt: "Legrand", highlighted: false },
   ];
 
   useEffect(() => {

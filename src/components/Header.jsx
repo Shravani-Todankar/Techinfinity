@@ -98,7 +98,7 @@ const Header = () => {
       icon: "📱"
     },
     {
-      title: "3D & 2D Animation",
+      title: "2D & 3D Animation",
       link: "https://techinfinity.studio",
       external: true,
       icon: "🎬"
