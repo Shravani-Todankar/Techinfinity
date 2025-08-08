@@ -95,15 +95,14 @@ const Footer = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: '120px',
-            overflow: 'hidden'
+            minHeight: '120px'
           }}
         >
           <VariableProximity
             label="TECHINFINITY"
             className="variable-proximity-demo"
-            fromFontVariationSettings="'wght' 300, 'opsz' 9"
-            toFontVariationSettings="'wght' 900, 'opsz' 40"
+            fromFontVariationSettings="'wght' 800, 'opsz' 9"
+            toFontVariationSettings="'wght' 300, 'opsz' 40"
             containerRef={footerRef}
             radius={120}
             falloff="exponential"

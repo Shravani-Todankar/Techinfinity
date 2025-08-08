@@ -60,9 +60,9 @@ const SectionThree = () => {
                 {/* Fixed SVG overlay */}
                 <svg
                     ref={svgRef}
-                    width="1410"
+                    width="1450"
                     height="2346"
-                    viewBox="0 0 1410 2346"
+                    viewBox="0 0 1450 2346"
                     xmlns="http://www.w3.org/2000/svg"
                     className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none"
                     style={{ transform: 'scaleY(-1)' }}
