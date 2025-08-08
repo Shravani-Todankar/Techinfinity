@@ -119,7 +119,7 @@ const JobListingsPage = () => {
         onChange={(e) => onChange(e.target.value)}
         className="job-filter-select"
       >
-        <option value="">{label}</option>
+        <option value="" disabled>{label}</option>
         {options.map((option, index) => (
           <option key={index} value={option}>
             {option}

@@ -1,19 +1,18 @@
 // Footer.jsx
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import logo from "../assets/TechinfinityLogo.png";
+import VariableProximity from './TechinfinityFooter';
 
 const Footer = () => {
+  const footerRef = useRef(null);
+  
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section company-info">
-            {/* <div className="techlogo">
-              <img src={logo} alt="Techinfinity Logo" />
-            </div> */}
-
             <div className="techlogo">
               <Link to="/">
                 <img src={logo} alt="Techinfinity Logo" />
@@ -50,26 +49,30 @@ const Footer = () => {
             <p>Looking for a job opportunity?</p>
             <p>
               <Link to="/careers" className="career-link">
-                <p>
-                See open positions
-                </p>
+                <p>See open positions</p>
               </Link>
-              {/* <a href="/career" className="career-link">
-                See open positions
-              </a> */}
             </p>
           </div>
 
           <div className="footer-section newsletter">
             <h3>Sign up for the newsletter</h3>
             <form className="newsletter-form">
-              <input type="email" className="email-input" placeholder="Email address" required />
+              <input 
+                type="email" 
+                className="email-input" 
+                placeholder="Email address" 
+                required 
+              />
               <button type="submit" className="signup-btn">
                 Sign Up
               </button>
             </form>
             <div className="checkbox-container">
-              <input type="checkbox" id="newsletter-consent" className="checkbox" />
+              <input 
+                type="checkbox" 
+                id="newsletter-consent" 
+                className="checkbox" 
+              />
               <label htmlFor="newsletter-consent" className="checkbox-label">
                 I'm okay with getting emails and having that activity tracked to improve my experience.
               </label>
@@ -81,8 +84,31 @@ const Footer = () => {
           All Rights Reserved 2025 © Techinfinity ™
         </div>
 
-        <div className="footer-large-text-desktop">TECHINFINITY</div>
-        <div className="footer-large-text-mobile">TECHINFINITY</div>
+        {/* <div className="footer-large-text-desktop">TECHINFINITY</div>
+        <div className="footer-large-text-mobile">TECHINFINITY</div> */}
+
+        <div
+          ref={footerRef}
+          style={{ 
+            position: 'relative',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '120px',
+            overflow: 'hidden'
+          }}
+        >
+          <VariableProximity
+            label="TECHINFINITY"
+            className="variable-proximity-demo"
+            fromFontVariationSettings="'wght' 300, 'opsz' 9"
+            toFontVariationSettings="'wght' 900, 'opsz' 40"
+            containerRef={footerRef}
+            radius={120}
+            falloff="exponential"
+          />
+        </div>
       </div>
     </footer>
   );

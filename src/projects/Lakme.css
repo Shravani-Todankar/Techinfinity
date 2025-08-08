@@ -1,0 +1,80 @@
+/* Lakme Gallery Styles */
+
+.lakme-showcase {
+    width: 100%;
+}
+
+.lakme-item {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.lakme-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.lakme-video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.lakme-video {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Error state styles */
+.lakme-image-error {
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lakme-error-message {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.lakme-error-title {
+    margin-bottom: 10px;
+}
+
+.lakme-error-filename {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.lakme-error-path {
+    font-size: 10px;
+    margin-top: 5px;
+    word-break: break-all;
+}
+
+/* Loading states */
+.lakme-image[loading="lazy"] {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Smooth scrolling for full-screen sections */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Focus states for accessibility */
+.lakme-video:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}

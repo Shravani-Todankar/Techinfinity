@@ -5,12 +5,18 @@ import Service from "./services/Webservice";
 import SeoServices from "./services/Seoservice";
 import PMServices from "./services/PMservice";
 import SMServices from "./services/SMservice";
+// Projects
+import LakmeGallery from "./projects/Lakme";
+import RapooMIGallery from "./projects/RapooMI";
+import KunutsGallery from "./projects/Kunuts";
+import MastmasalaGallery from "./projects/Mastmasala";
+import OrraGallery from "./projects/Orra";
+
 import OurWorks from "./works/ourWorks";
 import AboutUs from "./about/aboutUs";
 import Careers from "./career/Careers";
 import JobDetailPage from "./career/JobDetailModal.jsx";
 import ContactUs from "./contact/ContactUs.jsx";
-import LakmeGallery from "./services/Lakme";
 import SectionOne from "./Home/SectionOne";
 import SectionTwo from "./Home/SectionTwo";
 import SectionThree from "./Home/SectionThree";
@@ -180,6 +186,10 @@ function App() {
             <Route path="/job/:jobId" element={<JobDetailPage />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/lakme" element={<LakmeGallery />} />
+            <Route path="/RapooMI" element={<RapooMIGallery />} />
+            <Route path="/kunuts" element={<KunutsGallery />} />
+            <Route path="/mast-masala" element={<MastmasalaGallery />} />
+            <Route path="/orra" element={<OrraGallery />} />
           </Routes>
         </main>
         <Footer />

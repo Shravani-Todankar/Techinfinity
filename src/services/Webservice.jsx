@@ -158,37 +158,37 @@ const Carousel = () => {
       route: "/lakme" // Add route for Lakme
     },
     {
-      title: "BespokeBliss",
+      title: "Rapoo",
       num: "02",
       img: "https://media.istockphoto.com/id/1150545984/it/foto/palazzo-moderno-di-lusso-con-piscina.jpg?s=612x612&w=0&k=20&c=Pbrai_VGc9tUviMCF1UaBErdS1YGyIVWsD29jzMZwTY=",
-      route: null // No route yet
+      route: "/RapooMI" 
     },
     {
-      title: "Derma MD",
+      title: "Kunuts",
       num: "03",
       img: "https://media.istockphoto.com/id/1214351345/it/foto/guardando-direttamente-lo-skyline-del-quartiere-finanziario-nel-centro-di-londra-immagine-di.jpg?s=612x612&w=0&k=20&c=oNNbPzPvcQ-4RA6AeatNIxHQIafBiXmDRtUUY0Ska-I=",
-      route: null
+      route: "/kunuts"
     },
     {
-      title: "Sarvatra",
+      title: "Mast Masala",
       num: "04",
       img: "https://media.istockphoto.com/id/904390980/it/foto/foto-di-architettura-contemporanea-astratta.jpg?s=612x612&w=0&k=20&c=_P4Wmx5nq5MeDuimpNklKCBlrLovmCyd9lfiMKeJZDs=",
-      route: null
+      route: "/mast-masala"
     },
     {
-      title: "MediSkin",
+      title: "Orra",
       num: "05",
       img: "https://media.istockphoto.com/id/130408311/it/foto/piscina-allesterno-della-casa-moderna-al-crepuscolo.jpg?s=612x612&w=0&k=20&c=ZoVjx7uDjoHKmpM1ayW6UR1SQOoYh_xx-QMG_qeOYs0=",
-      route: null
+      route: "/orra"
     },
     {
-      title: "Rapoo",
+      title: "BespokeBliss",
       num: "06",
       img: "https://media.istockphoto.com/id/1299954175/it/foto/villa-cubica-moderna.jpg?s=612x612&w=0&k=20&c=DhGhb3c1E3DW_fbrWJ_R_Zh0Lbwu6syFeRLsKlZ9no8=",
       route: null
     },
     {
-      title: "Transil",
+      title: "Sarvatra",
       num: "07",
       img: "https://media.istockphoto.com/id/926689776/it/foto/vista-ad-angolo-basso-dei-grattacieli-di-new-york.jpg?s=612x612&w=0&k=20&c=DmEB0Ty7ZwDnBoU5SuA8FNevOp4G1UcECw5aS4vA9A8=",
       route: null

@@ -231,14 +231,14 @@ const About = () => {
               </div>
             </div>
             <div className="omkar">
-              <img src={d2} alt='omkar' />
+              <img src={d3} alt='omkar' />
               <div className="director-designation">
                 <p className='director-name'>Omkar Pai</p>
                 <p>Director</p>
               </div>
             </div>
             <div className="hemant">
-              <img src={d3} alt='hemant' />
+              <img src={d2} alt='hemant' />
               <div className="director-designation">
                 <p className='director-name'>Hemant Shah</p>
                 <p>Director</p>

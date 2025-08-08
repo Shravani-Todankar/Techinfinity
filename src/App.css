@@ -1550,6 +1550,11 @@ textarea {
   line-height: 1;
 }
 
+.Techcode-footer{
+  display: flex;
+  justify-content: center;
+}
+
 /* Go To top */
 .go-to-top {
   position: fixed;
