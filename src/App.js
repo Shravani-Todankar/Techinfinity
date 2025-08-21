@@ -46,6 +46,8 @@ import ICICILogo from './assets/Falling-Logos/ICICI.png';
 import BMLogo from './assets/Falling-Logos/BabyMoo.png';
 import LegrandLogo from './assets/Falling-Logos/Legrand.png';
 
+import AnimatedTestimonialsDemo from "./Home/AnimatedTestimonialsDemo.jsx";
+import "./Home/AnimatedTestimonials.css"; 
 import SectionSix from "./Home/SectionSix";
 import SectionSeven from "./Home/SectionSeven";
 import Footer from "./components/Footer";
@@ -138,6 +140,7 @@ const Home = () => {
         imageWidth={80}
         imageHeight={60}
       />
+      <AnimatedTestimonialsDemo />
       <SectionSix />
       <SectionSeven />
     </div>
