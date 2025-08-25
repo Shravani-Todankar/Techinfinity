@@ -315,7 +315,7 @@
 /* Extra Small Mobile Styles */
 @media (max-width: 480px) {
     .animated-testimonials-container {
-        padding: 70px 10px;
+        padding: 130px 0px 10px;
     }
 
     .image-wrapper {
