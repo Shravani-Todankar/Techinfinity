@@ -3,6 +3,52 @@ import { useNavigate } from 'react-router-dom'; // Add this import
 import './Webservice.css';
 import CTAform from "../works/form";
 
+// Dynamic image imports - Add this function to dynamically import images
+const importAll = (r) => {
+  let images = {};
+  r.keys().map((item, index) => {
+    images[item.replace('./', '')] = r(item);
+  });
+  return images;
+};
+
+// Import all images from assets/infinity2 folder
+const getInfinityImages = () => {
+  try {
+    // This will import all images from the infinity2 folder
+    const images = importAll(
+      require.context('../assets/infinity2', false, /\.(png|jpe?g|svg)$/)
+    );
+    
+    // Convert to array and sort by filename
+    return Object.entries(images)
+      .sort(([a], [b]) => {
+        // Extract numbers from filenames for proper sorting
+        const numA = parseInt(a.match(/\d+/)?.[0] || '0');
+        const numB = parseInt(b.match(/\d+/)?.[0] || '0');
+        return numA - numB;
+      })
+      .map(([key, value]) => value.default || value)
+      .slice(0, 20);
+  } catch (error) {
+    console.warn('Could not load infinity images:', error);
+    // Fallback to manual imports if dynamic import fails
+    return [];
+  }
+};
+
+// Alternative manual import approach (uncomment if dynamic import doesn't work)
+/*
+import img1 from '../assets/infinity2/1.jpg';
+import img2 from '../assets/infinity2/2.jpg';
+import img3 from '../assets/infinity2/3.jpg';
+import img4 from '../assets/infinity2/4.jpg';
+import img5 from '../assets/infinity2/5.jpg';
+// Add more imports as needed
+
+const infinityImages = [img1, img2, img3, img4, img5];
+*/
+
 // TextScramble Component
 const TextScramble = ({ phrases = ['Web Development'], interval = 1200 }) => {
     const [displayText, setDisplayText] = useState('');
@@ -451,8 +497,30 @@ const WebDevelopmentSection = () => {
 
   const InfinityShape = () => {
     const containerRef = useRef(null);
-    const totalImages = 28;
+    const [infinityImages, setInfinityImages] = useState([]);
     const [dimensions, setDimensions] = useState({ centerX: 300, centerY: 300, radius: 170 });
+
+    // Load images on component mount
+    useEffect(() => {
+      const loadImages = () => {
+        try {
+          const images = getInfinityImages();
+          if (images.length > 0) {
+            setInfinityImages(images);
+          } else {
+            // Fallback: create array with placeholder or default images
+            console.warn('No images found in assets/infinity2 folder, using fallback');
+            // You can set a fallback array here if needed
+            setInfinityImages([]);
+          }
+        } catch (error) {
+          console.error('Error loading infinity images:', error);
+          setInfinityImages([]);
+        }
+      };
+
+      loadImages();
+    }, []);
 
     useEffect(() => {
       const updateLayout = () => {
@@ -471,6 +539,8 @@ const WebDevelopmentSection = () => {
     }, []);
 
     useEffect(() => {
+      if (!containerRef.current || infinityImages.length === 0) return;
+
       const elements = containerRef.current.querySelectorAll(".faq-img");
       const duration = 8000;
       let startTime = null;
@@ -491,16 +561,38 @@ const WebDevelopmentSection = () => {
       }
 
       requestAnimationFrame(animate);
-    }, [dimensions]);
+    }, [dimensions, infinityImages]);
+
+    // Don't render if no images are loaded
+    if (infinityImages.length === 0) {
+      return (
+        <div className="faq-img-container">
+          <div style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)',
+            color: '#666',
+            fontSize: '14px'
+          }}>
+            Loading images...
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div className="faq-img-container" ref={containerRef}>
-        {Array.from({ length: totalImages }, (_, index) => (
+        {infinityImages.map((imageSrc, index) => (
           <img
             key={index}
-            src={`https://picsum.photos/seed/${index + 1}/60/60`}
-            alt={`random-${index}`}
+            src={imageSrc}
+            alt={`infinity-image-${index + 1}`}
             className="faq-img"
+            onError={(e) => {
+              console.warn(`Failed to load image at index ${index}:`, imageSrc);
+              e.target.style.display = 'none'; // Hide broken images
+            }}
           />
         ))}
       </div>
