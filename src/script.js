@@ -77,21 +77,78 @@ let animationComplete = false;
 let infinityShiftComplete = false;
 
 // Main initialization function for infinity animation
-export function initInfinityAnimation() {
+export function initInfinityAnimation(customImages = null, customLinks = null) {
     if (typeof window === 'undefined') return;
-    
+
+    // Use custom images if provided, otherwise fallback to original
+    const imgSrcs = customImages || [
+        '/assets/infinity1/1.jpg',
+        '/assets/infinity1/2.jpg',
+        '/assets/infinity1/3.jpg',
+        '/assets/infinity1/4.jpg',
+        '/assets/infinity1/5.jpg',
+        '/assets/infinity1/6.jpg',
+        '/assets/infinity1/7.jpg',
+        '/assets/infinity1/8.jpg',
+        '/assets/infinity1/9.jpg',
+        '/assets/infinity1/10.jpg',
+        '/assets/infinity1/11.jpg',
+        '/assets/infinity1/12.jpg',
+        '/assets/infinity1/13.jpg',
+        '/assets/infinity1/14.jpg',
+        '/assets/infinity1/15.jpg',
+        '/assets/infinity1/16.jpg',
+        '/assets/infinity1/17.jpg',
+        '/assets/infinity1/18.jpg',
+        '/assets/infinity1/19.jpg',
+        '/assets/infinity1/20.jpg',
+        '/assets/infinity1/21.jpg',
+        '/assets/infinity1/22.jpg',
+        '/assets/infinity1/23.jpg',
+        '/assets/infinity1/24.jpg',
+    ];
+
+    // Use custom links if provided, otherwise fallback to original
+    const imgLinks = customLinks || [
+        'https://example.com/portfolio/project-1',
+        'https://example.com/portfolio/project-2',
+        'https://example.com/portfolio/project-3',
+        'https://example.com/services/web-development',
+        'https://example.com/portfolio/project-4',
+        'https://example.com/services/digital-marketing',
+        'https://example.com/portfolio/project-5',
+        'https://example.com/services/seo',
+        'https://example.com/portfolio/project-6',
+        'https://example.com/services/social-media',
+        'https://example.com/portfolio/project-7',
+        'https://example.com/services/animation',
+        'https://example.com/portfolio/project-8',
+        'https://example.com/case-studies/success-story-1',
+        'https://example.com/portfolio/project-9',
+        'https://example.com/case-studies/success-story-2',
+        'https://example.com/portfolio/project-10',
+        'https://example.com/blog/marketing-trends',
+        'https://example.com/portfolio/project-11',
+        'https://example.com/about-us',
+        'https://example.com/portfolio/project-12',
+        'https://example.com/contact',
+        'https://example.com/portfolio/project-13',
+        'https://example.com/portfolio/project-16',
+        'https://example.com/get-quote',
+    ];
+
     setTimeout(() => {
         const container = document.getElementById('container');
         const infinityContainer = document.getElementById('infinity-container');
         const topText = document.getElementById('top-text');
-        
+
         if (!container || !infinityContainer || !topText) {
             console.warn('Required elements not found for infinity animation');
             return;
         }
 
         infinityContainer.innerHTML = '';
-        
+
         imgSrcs.forEach((src, index) => {
             const link = document.createElement('a');
             link.href = imgLinks[index] || '#';
@@ -118,7 +175,7 @@ export function initInfinityAnimation() {
 
         initializeSectionPinning();
         fadeInImages();
-        
+
         const header = document.querySelector('.header');
         if (header) {
             header.classList.add('hidden');
@@ -181,9 +238,9 @@ export function fadeInImages(index = 0) {
 export function alignImagesInRow() {
     const images = document.querySelectorAll('.img-item');
     const infinityContainer = document.getElementById('infinity-container');
-    
+
     if (!infinityContainer || !images.length) return;
-    
+
     const containerWidth = infinityContainer.clientWidth;
     const margin = 20;
     const totalWidth = images.length * (60 + margin) - margin;
@@ -202,9 +259,9 @@ export function formInfinityShape() {
     const container = document.getElementById('container');
     const infinityContainer = document.getElementById('infinity-container');
     const images = document.querySelectorAll('.img-item');
-    
+
     if (!container || !infinityContainer || !images.length) return;
-    
+
     container.classList.add('slow-transition');
 
     const containerWidth = infinityContainer.clientWidth;
@@ -288,9 +345,9 @@ export function formInfinityShape() {
 export function shiftInfinityShapeDown() {
     const infinityContainer = document.getElementById('infinity-container');
     const images = document.querySelectorAll('.img-item');
-    
+
     if (!infinityContainer || !images.length) return;
-    
+
     const shiftDistance = window.innerHeight * 0.1;
 
     const shiftTimeline = gsap.timeline({
@@ -333,12 +390,12 @@ export function shiftInfinityShapeDown() {
         ease: "power1.inOut",
         stagger: 0.03
     }, 0.2)
-    .to(images, {
-        opacity: 1,
-        duration: 1.0,
-        ease: "power1.inOut",
-        stagger: 0.02
-    }, 1.0);
+        .to(images, {
+            opacity: 1,
+            duration: 1.0,
+            ease: "power1.inOut",
+            stagger: 0.02
+        }, 1.0);
 }
 
 export function animateSplitText(textElement) {
@@ -393,9 +450,9 @@ export function animateSplitText(textElement) {
 export function enableRepelAndFlipProximity() {
     const infinityContainer = document.getElementById('infinity-container');
     const images = document.querySelectorAll('.img-item');
-    
+
     if (!infinityContainer || !images.length) return;
-    
+
     const maxRepelDistance = 100;
     const maxRepelAmount = 35;
 
@@ -409,7 +466,7 @@ export function enableRepelAndFlipProximity() {
 
             const orig = originalPositions[idx];
             if (!orig) return;
-            
+
             const dx = orig.x - mouseX;
             const dy = orig.y - mouseY;
             const dist = Math.sqrt(dx * dx + dy * dy);
@@ -681,7 +738,7 @@ export function initializeSecondSection() {
 function initMagneticPlayButton() {
     const videoOverlay = document.getElementById('videoOverlay');
     const playButton = document.getElementById('playButton');
-    
+
     if (!videoOverlay || !playButton) {
         console.warn('Video overlay or play button not found!');
         return;
@@ -695,26 +752,26 @@ function initMagneticPlayButton() {
         const rect = videoOverlay.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        
+
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        
+
         const deltaX = mouseX - centerX;
         const deltaY = mouseY - centerY;
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        
+
         if (distance < magneticRadius) {
             const strength = (magneticRadius - distance) / magneticRadius;
             const moveX = deltaX * strength * magneticStrength;
             const moveY = deltaY * strength * magneticStrength;
-            
+
             gsap.to(playButton, {
                 x: moveX,
                 y: moveY,
                 duration: 0.3,
                 ease: "power2.out"
             });
-            
+
             if (!isHovering) {
                 isHovering = true;
                 gsap.to(playButton, {
@@ -722,7 +779,7 @@ function initMagneticPlayButton() {
                     duration: 0.3,
                     ease: "power2.out"
                 });
-                
+
                 gsap.to(playButton, {
                     boxShadow: "0 0 30px rgba(255, 255, 255, 0.5)",
                     duration: 0.3,
@@ -884,11 +941,11 @@ function initMagneticPlayButton() {
     function handlePlayButtonClick(e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // Remove magnetic effect listeners
         videoOverlay.removeEventListener('mousemove', updateMagneticEffect);
         videoOverlay.removeEventListener('mouseleave', resetButton);
-        
+
         // Button click animation
         gsap.to(playButton, {
             scale: 0.9,
@@ -902,38 +959,38 @@ function initMagneticPlayButton() {
                 });
             }
         });
-        
+
         // Create and show lightbox modal
         const modal = createLightboxModal();
         document.body.appendChild(modal);
-        
+
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
-        
+
         // Show modal with animation
         setTimeout(() => {
             modal.classList.add('active');
         }, 10);
-        
+
         // Close modal function
         function closeLightbox() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
-            
+
             setTimeout(() => {
                 if (modal.parentNode) {
                     document.body.removeChild(modal);
                 }
             }, 300);
         }
-        
+
         // Add event listeners for closing
         const closeBtn = modal.querySelector('.lightbox-close');
         const backdrop = modal.querySelector('.lightbox-backdrop');
-        
+
         closeBtn.addEventListener('click', closeLightbox);
         backdrop.addEventListener('click', closeLightbox);
-        
+
         // Close on Escape key
         function handleKeyDown(e) {
             if (e.key === 'Escape') {
@@ -942,7 +999,7 @@ function initMagneticPlayButton() {
             }
         }
         document.addEventListener('keydown', handleKeyDown);
-        
+
         // Remove the original video overlay fade out
         // Keep the video overlay visible for future use
     }
@@ -950,24 +1007,24 @@ function initMagneticPlayButton() {
     setTimeout(() => {
         videoOverlay.style.opacity = '1';
         videoOverlay.style.pointerEvents = 'auto';
-        
+
         videoOverlay.addEventListener('mousemove', updateMagneticEffect);
         videoOverlay.addEventListener('mouseleave', resetButton);
         playButton.addEventListener('click', handlePlayButtonClick);
-        
-        gsap.fromTo(playButton, 
-            { 
-                scale: 0, 
-                opacity: 0 
+
+        gsap.fromTo(playButton,
+            {
+                scale: 0,
+                opacity: 0
             },
-            { 
-                scale: 1, 
-                opacity: 1, 
-                duration: 0.6, 
-                ease: "back.out(1.7)" 
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 0.6,
+                ease: "back.out(1.7)"
             }
         );
-        
+
     }, 500);
 }
 
@@ -1126,46 +1183,46 @@ export function initializeCircleRingAnimation() {
 // export function initSVGAnimation() {
 //     const svgSection = document.querySelector('.section-three');
 //     const svgPaths = document.querySelectorAll('.svg-line path');
-    
+
 //     if (!svgSection || !svgPaths.length) return;
-    
+
 //     svgPaths.forEach(path => {
 //         const pathLength = path.getTotalLength();
 //         path.style.strokeDasharray = pathLength;
 //         path.style.strokeDashoffset = pathLength;
 //     });
-    
+
 //     function updateSVGAnimation() {
 //         const sectionTop = svgSection.offsetTop;
 //         const sectionHeight = svgSection.offsetHeight;
 //         const scrollTop = window.pageYOffset;
 //         const windowHeight = window.innerHeight;
-        
+
 //         const sectionStart = sectionTop - windowHeight;
 //         const sectionEnd = sectionTop + sectionHeight;
-        
+
 //         let scrollProgress = 0;
-        
+
 //         if (scrollTop >= sectionStart && scrollTop <= sectionEnd) {
 //             scrollProgress = (scrollTop - sectionStart) / (sectionEnd - sectionStart);
 //             scrollProgress = Math.max(0, Math.min(1, scrollProgress));
 //         }
-        
+
 //         svgPaths.forEach(path => {
 //             const pathLength = path.getTotalLength();
 //             const drawLength = pathLength * scrollProgress;
 //             path.style.strokeDashoffset = pathLength - drawLength;
 //         });
 //     }
-    
+
 //     updateSVGAnimation();
-    
+
 //     const scrollHandler = () => updateSVGAnimation();
 //     const resizeHandler = () => updateSVGAnimation();
-    
+
 //     window.addEventListener('scroll', scrollHandler);
 //     window.addEventListener('resize', resizeHandler);
-    
+
 //     return () => {
 //         window.removeEventListener('scroll', scrollHandler);
 //         window.removeEventListener('resize', resizeHandler);
@@ -1175,14 +1232,14 @@ export function initializeCircleRingAnimation() {
 export function initSectionThreeSVGAnimation() {
     const svgSection = document.querySelector('.section-three');
     const svgPaths = document.querySelectorAll('.section-three svg path, .section-three svg line');
-    
+
     if (!svgSection || !svgPaths.length) return;
-    
+
     // Group elements by layers and initialize stroke properties
     const elementsData = Array.from(svgPaths).map((path, index) => {
         const length = path.getTotalLength();
         let layer = 0;
-        
+
         // Determine which layer this element belongs to
         if (index >= 0 && index <= 3) {
             layer = 0; // Top curves layer
@@ -1191,11 +1248,11 @@ export function initSectionThreeSVGAnimation() {
         } else if (index >= 8 && index <= 11) {
             layer = 2; // Bottom curves layer
         }
-        
+
         // Initialize stroke properties
         path.style.strokeDasharray = length;
         path.style.strokeDashoffset = length;
-        
+
         return {
             element: path,
             length: length,
@@ -1203,7 +1260,7 @@ export function initSectionThreeSVGAnimation() {
             index: index
         };
     });
-    
+
     // Create ScrollTrigger for Section Three SVG Animation
     ScrollTrigger.create({
         trigger: ".section-three",
@@ -1213,21 +1270,21 @@ export function initSectionThreeSVGAnimation() {
         invalidateOnRefresh: true, // Recalculate on window resize
         onUpdate: (self) => {
             const progress = self.progress;
-            
+
             elementsData.forEach(data => {
                 // Each layer starts animating after the previous layer is complete
                 const layerStartProgress = data.layer * 0.35; // Layer 0 starts at 0%, layer 1 at 25%, layer 2 at 50%
                 const layerAnimationDuration = 0.3; // Each layer animates over 30% of scroll
-                
+
                 const layerEndProgress = layerStartProgress + layerAnimationDuration;
-                
+
                 let layerScrollFraction = 0;
                 if (progress >= layerStartProgress && progress <= layerEndProgress) {
                     layerScrollFraction = (progress - layerStartProgress) / layerAnimationDuration;
                 } else if (progress > layerEndProgress) {
                     layerScrollFraction = 1;
                 }
-                
+
                 // Apply the animation
                 if (data.element && data.element.style) {
                     data.element.style.strokeDashoffset = data.length * (1 - layerScrollFraction);
@@ -1259,7 +1316,7 @@ export function initSectionThreeSVGAnimation() {
             });
         }
     });
-    
+
     // Return cleanup function
     return () => {
         ScrollTrigger.getAll().forEach(trigger => {
@@ -1300,21 +1357,71 @@ const imageData = [
     { src: 'https://picsum.photos/60/70?random=24', alt: 'Desert dunes' }
 ];
 
-export function createInfinityGallery() {
+// export function createInfinityGallery() {
+//     const infinityShape = document.getElementById('infinityShape');
+//     if (!infinityShape) return;
+
+//     infinityShape.innerHTML = '';
+
+//     imageData.forEach((imageInfo, index) => {
+//         const imageItem = document.createElement('div');
+//         imageItem.className = 'infinity-image-item';
+
+//         const img = document.createElement('img');
+//         img.src = imageInfo.src;
+//         img.alt = imageInfo.alt;
+//         img.loading = 'lazy';
+
+//         imageItem.appendChild(img);
+//         infinityShape.appendChild(imageItem);
+//     });
+// }
+
+// Updated createInfinityGallery function - replace the existing one in script.js
+
+export function createInfinityGallery(customImages = null) {
     const infinityShape = document.getElementById('infinityShape');
     if (!infinityShape) return;
-    
+
+    // Use custom images if provided, otherwise fallback to original imageData
+    const imagesToUse = customImages || [
+        { src: 'https://picsum.photos/60/70?random=1', alt: 'Mountain landscape' },
+        { src: 'https://picsum.photos/60/70?random=2', alt: 'Forest path' },
+        { src: 'https://picsum.photos/60/70?random=3', alt: 'Ocean waves' },
+        { src: 'https://picsum.photos/60/70?random=4', alt: 'City skyline' },
+        { src: 'https://picsum.photos/60/70?random=5', alt: 'Desert landscape' },
+        { src: 'https://picsum.photos/60/70?random=6', alt: 'Cherry blossoms' },
+        { src: 'https://picsum.photos/60/70?random=7', alt: 'Northern lights' },
+        { src: 'https://picsum.photos/60/70?random=8', alt: 'Lake reflection' },
+        { src: 'https://picsum.photos/60/70?random=9', alt: 'Snowy mountains' },
+        { src: 'https://picsum.photos/60/70?random=10', alt: 'Canyon vista' },
+        { src: 'https://picsum.photos/60/70?random=11', alt: 'Sunset beach' },
+        { src: 'https://picsum.photos/60/70?random=12', alt: 'Waterfall cascade' },
+        { src: 'https://picsum.photos/60/70?random=13', alt: 'Tropical paradise' },
+        { src: 'https://picsum.photos/60/70?random=14', alt: 'Mountain peak' },
+        { src: 'https://picsum.photos/60/70?random=15', alt: 'River valley' },
+        { src: 'https://picsum.photos/60/70?random=16', alt: 'Starry night' },
+        { src: 'https://picsum.photos/60/70?random=17', alt: 'Golden hour' },
+        { src: 'https://picsum.photos/60/70?random=18', alt: 'Rocky coastline' },
+        { src: 'https://picsum.photos/60/70?random=19', alt: 'Alpine lake' },
+        { src: 'https://picsum.photos/60/70?random=20', alt: 'Forest canopy' },
+        { src: 'https://picsum.photos/60/70?random=21', alt: 'Ice formations' },
+        { src: 'https://picsum.photos/60/70?random=22', alt: 'Volcanic landscape' },
+        { src: 'https://picsum.photos/60/70?random=23', alt: 'Meadow flowers' },
+        { src: 'https://picsum.photos/60/70?random=24', alt: 'Desert dunes' }
+    ];
+
     infinityShape.innerHTML = '';
-    
-    imageData.forEach((imageInfo, index) => {
+
+    imagesToUse.forEach((imageInfo, index) => {
         const imageItem = document.createElement('div');
         imageItem.className = 'infinity-image-item';
-        
+
         const img = document.createElement('img');
         img.src = imageInfo.src;
         img.alt = imageInfo.alt;
         img.loading = 'lazy';
-        
+
         imageItem.appendChild(img);
         infinityShape.appendChild(imageItem);
     });
@@ -1323,12 +1430,12 @@ export function createInfinityGallery() {
 export function initializeGSAPAnimation() {
     const imageItems = document.querySelectorAll('.infinity-image-item');
     const infinityShape = document.querySelector('.infinity-shape');
-    
+
     if (!imageItems.length || !infinityShape) return;
-    
+
     gsap.set(infinityShape, { opacity: 0 });
     gsap.set(imageItems, { opacity: 0, scale: 0, visibility: "hidden" });
-    
+
     ScrollTrigger.create({
         trigger: ".section-six",
         start: "center bottom",
@@ -1339,10 +1446,10 @@ export function initializeGSAPAnimation() {
         },
         onUpdate: self => {
             const progress = self.progress;
-            
+
             imageItems.forEach((item, index) => {
                 const imageProgress = Math.max(0, Math.min(1, (progress * 50 - index * 0.8)));
-                
+
                 if (imageProgress > 0) {
                     gsap.set(item, { visibility: "visible" });
                     gsap.to(item, {
@@ -1356,7 +1463,7 @@ export function initializeGSAPAnimation() {
                     gsap.to(item, {
                         opacity: 0,
                         scale: 0,
-                        duration: 0.15 
+                        duration: 0.15
                     });
                 }
             });
@@ -1367,7 +1474,7 @@ export function initializeGSAPAnimation() {
 export function initializeParallax() {
     const sectionSix = document.querySelector(".section-six");
     if (!sectionSix) return;
-    
+
     gsap.to(sectionSix, {
         yPercent: -50,
         ease: "none",
@@ -1385,45 +1492,45 @@ export function initializeFormHandling() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const formData = new FormData(this);
         const data = Object.fromEntries(formData);
-        
+
         if (!data.name || !data.email || !data.requirements) {
             alert('Please fill in all required fields.');
             return;
         }
-        
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(data.email)) {
             alert('Please enter a valid email address.');
             return;
         }
-        
+
         const submitBtn = this.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
-        
+
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
-        
+
         setTimeout(() => {
             // alert('Thank you! Your message has been submitted successfully.');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            
+
             document.getElementById('requirements').value = '';
         }, 1500);
     });
 
     const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
-        input.addEventListener('focus', function() {
+        input.addEventListener('focus', function () {
             this.parentElement.style.transform = 'translateY(-2px)';
         });
-        
-        input.addEventListener('blur', function() {
+
+        input.addEventListener('blur', function () {
             this.parentElement.style.transform = 'translateY(0)';
         });
     });
@@ -1440,13 +1547,13 @@ export function initializeGoToTop() {
         if (!isScrolling) {
             window.requestAnimationFrame(() => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
+
                 if (scrollTop > 300) {
                     goToTopBtn.classList.add('visible');
                 } else {
                     goToTopBtn.classList.remove('visible');
                 }
-                
+
                 isScrolling = false;
             });
             isScrolling = true;
@@ -1477,7 +1584,7 @@ export function handleScroll() {
     if (!goToTopBtn) return;
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > 300) {
         goToTopBtn.classList.add('visible');
     } else {
@@ -1488,14 +1595,14 @@ export function handleScroll() {
 export function scrollToTop() {
     const scrollDuration = 800;
     const scrollStep = -window.scrollY / (scrollDuration / 15);
-    
+
     function smoothScroll() {
         if (window.scrollY !== 0) {
             window.scrollBy(0, scrollStep);
             requestAnimationFrame(smoothScroll);
         }
     }
-    
+
     smoothScroll();
 }
 
@@ -1510,36 +1617,36 @@ export function smoothScrollToTop() {
 // Initialize all animations when DOM is ready
 export function initializeAllAnimations() {
     if (typeof window === 'undefined') return;
-    
+
     // Initialize counters
     initializeCounters();
-    
+
     // Initialize circle rings
     initializeCircleRingAnimation();
-    
+
     // Initialize SVG animation
     const svgCleanup = initSectionThreeSVGAnimation();
-    
+
     // Initialize service provider
     initializeServiceProvider();
-    
+
     // Initialize section six gallery
     setTimeout(() => {
         createInfinityGallery();
         initializeGSAPAnimation();
         initializeParallax();
     }, 50);
-    
+
     // Initialize form handling
     initializeFormHandling();
-    
+
     // Initialize go to top
     initializeGoToTop();
-    
+
     // Scroll indicator reinitialization
     reenableScrollIndicatorOnScrollUp();
 
-    
+
     // Return cleanup function
     return () => {
         if (svgCleanup) svgCleanup();
