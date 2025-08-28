@@ -1615,6 +1615,7 @@ export function smoothScrollToTop() {
 
 
 // Initialize all animations when DOM is ready
+// Updated initializeAllAnimations function - replace in your script.js
 export function initializeAllAnimations() {
     if (typeof window === 'undefined') return;
 
@@ -1630,9 +1631,9 @@ export function initializeAllAnimations() {
     // Initialize service provider
     initializeServiceProvider();
 
-    // Initialize section six gallery
+    // REMOVED: Section six gallery initialization - now handled in React component
+    // Initialize section six animations are now handled in SectionSix.jsx
     setTimeout(() => {
-        createInfinityGallery();
         initializeGSAPAnimation();
         initializeParallax();
     }, 50);
@@ -1645,7 +1646,6 @@ export function initializeAllAnimations() {
 
     // Scroll indicator reinitialization
     reenableScrollIndicatorOnScrollUp();
-
 
     // Return cleanup function
     return () => {
